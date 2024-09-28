@@ -3,5 +3,20 @@
 		"email": "nawaf@fds.com",
 		"password": "$2a$14$WyO4xaEmZ.09VIKkf2/tae0NrVfwBovFw5SCFkDC6XB2MP9dY7XJ.",
 		"username": "coolkid123"
+	},
+	{
+		"email": "cedricgarand@hotmail.com",
+		"password": "$2a$14$KW3kuopKYOPLO0U999fs5.jA93X1zC8NCdH5GAJ3lrCsOh2Cy0fHG",
+		"username": "cedric"
+	},
+	{
+		"email": "test@test.com",
+		"password": "$2a$14$oFIPegCwXsgFWRKZ4vwwyOVRcvV/.VnG5P/sZaF/CNxqwrgllhTcG",
+		"username": ""
+	},
+	{
+		"email": "test@test.com",
+		"password": "$2a$14$Oi6.xnkJZIgGpgqxnUINs.rsvqSdGFVsfpsc.U4Hrbw.nIjj0evLW",
+		"username": "Cedric"
 	}
 ]
