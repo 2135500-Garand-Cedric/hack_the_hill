@@ -91,10 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($httpCode === 200) {
                 // Success, handle the response (you can decode JSON here if needed)
                 $responseData = json_decode($response, true);
-                // Do something with the response (e.g., redirect, display message)
-                $test = $response['token'];
-                $_SESSION['snackbar_message'] = "An error occured during sign up.<br />";
-                $_SESSION['token'] = $response['token'];
+                $_SESSION['token'] = $responseData['token'];
                 header("Location: onboarding.php");
             } else {
                 // Handle error response

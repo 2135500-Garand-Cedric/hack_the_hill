@@ -22,9 +22,9 @@ require './include/configurations.php';
 	<div class="main">  	
 		<input type="checkbox" id="chk" aria-hidden="true">
 		<div class="signup">
-			<form action="index.php">
+			<form action="onboarding_validation.php" method="POST">
 				<h2 for="chk" aria-hidden="true">Tell us about yourself!</h2>
-				<label for="q1">Question 1?</label>
+				<label for="q1">What is your goal?</label>
                 <textarea name="q1" required="" rows="4"></textarea>
 				<label for="q2">What are your hobbies?</label>
                 <textarea name="q2" required="" rows="4"></textarea>

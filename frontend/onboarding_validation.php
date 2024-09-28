@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Prepare the data to be sent
         $data = [
-            'goal' => $goal,
+            'goals' => $goal,
             'hobbies' => $hobbies,
             'interests' => $interests,
             'occupation' => $occupation,
@@ -39,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $ch = curl_init($api_url);
         $token = $_SESSION['token'];
-        echo $token;
 
         // Set cURL options
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -58,15 +57,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         curl_close($ch);
 
         // Check the response
-        if ($httpCode === 200) {
+        if ($http_code === 200) {
             // Success, handle the response (you can decode JSON here if needed)
             $responseData = json_decode($response, true);
-            // Do something with the response (e.g., redirect, display message)
-            $_SESSION['snackbar_message'] = $response['message'];
+            $_SESSION['snackbar_message'] = $responseData['message'];
             header("Location: index.php");
         } else {
             // Handle error response
-            $_SESSION['snackbar_message'] = "${response} ${token} An error occured with the onboarding.<br />";
+            $_SESSION['snackbar_message'] = "An error occured with the onboarding.<br />";
             header("Location: onboarding.php");
         }
     } else {
