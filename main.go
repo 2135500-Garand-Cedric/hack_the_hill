@@ -4,14 +4,13 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"hackthehill/backend/routes"
 )
 
 func main() {
 	app := fiber.New()
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
-	})
+	routes.Setup(app)
 
 	log.Fatal(app.Listen(":3000"))
 }
