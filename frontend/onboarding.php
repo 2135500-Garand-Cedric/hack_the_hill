@@ -12,7 +12,7 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 		<div class="signup">
 			<form action="index.php">
-				<h2 for="chk" aria-hidden="true">Onboarding</h2>
+				<h2 for="chk" aria-hidden="true">Tell us about yourself!</h2>
 				<label for="q1">Question 1?</label>
                 <textarea name="q1" required="" rows="4"></textarea>
 				<label for="q2">Question 2?</label>

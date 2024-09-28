@@ -7,13 +7,13 @@ body {
 	align-items: center;
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
-	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+	background: linear-gradient(to bottom, #24b6f8, #1a0dab, #24243e);
 }
 
 h2 {
-	color: #fff;
+	color: #5bc7e8;
 	font-size: 2.3em;
-	justify-content: left;
+	justify-content: center;
 	display: flex;
 	margin: 60px;
 	font-weight: bold;
@@ -24,7 +24,7 @@ h2 {
 .main {
 	width: 550px;
 	height: 600px;
-	background: red;
+	background: rgb(46, 165, 191);
 	overflow: hidden;
 	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
 	border-radius: 10px;
@@ -47,8 +47,8 @@ h2 {
 
 label {
     width: 60%;
-    margin: 20px auto;
-	color: #fff;
+    margin: 10px auto;
+	color: #b6e2f4;
 	font-size: 1em;
 	justify-content: left;
 	display: flex;
@@ -60,14 +60,15 @@ label {
 textarea {
 	width: 60%;
 	height: 80px;
-	background: #e0dede;
+	background: #b4c6e7;
 	justify-content: center;
 	display: flex;
-	margin: 20px auto;
+	margin: 10px auto;
+	margin-bottom: 30px;
 	padding: 10px;
 	border: none;
 	outline: none;
-	border-radius: 5px;
+	border-radius: 7px;
 }
 
 button {
@@ -77,7 +78,7 @@ button {
 	justify-content: center;
 	display: block;
 	color: #fff;
-	background: #573b8a;
+	background: #1a20ddc2;
 	font-size: 1em;
 	font-weight: bold;
 	margin-top: 20px;
@@ -89,7 +90,7 @@ button {
 }
 
 button:hover {
-	background: #6d44b8;
+	background: #1287e1;
 }
 
 .login {
@@ -101,7 +102,7 @@ button:hover {
 }
 
 .login label {
-	color: #573b8a;
+	color: #18d3f4;
 	transform: scale(.6);
 }
 
