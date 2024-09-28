@@ -11,9 +11,24 @@ import (
 
 type UsersDB []map[string]interface{}
 type User map[string]interface{}
+
+type ProfilesDB []map[string]interface{}
+type Profile map[string]interface{}
+
 func GetDB() *AlgoeDB.Database {
 
 	config := AlgoeDB.DatabaseConfig{Path: "./db/users.json"}
+	db, err := AlgoeDB.NewDatabase(&config)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return db
+}
+
+func GetProfileDB() *AlgoeDB.Database {
+
+	config := AlgoeDB.DatabaseConfig{Path: "./db/profiles.json"}	
 	db, err := AlgoeDB.NewDatabase(&config)
 	if err != nil {
 		log.Fatal(err)
@@ -33,6 +48,18 @@ func GetDB() *AlgoeDB.Database {
 // }	
 
 
+func InsertProfile(db *AlgoeDB.Database, profile Profile) error {
+
+	err := db.InsertOne(profile)
+	if err != nil {
+		fmt.Println(err)
+		return err
+	}
+
+	return nil
+}
+
+
 func FindUserByEmail(db *AlgoeDB.Database, email string) (User, error) {
 	
 
@@ -48,33 +75,23 @@ func FindUserByEmail(db *AlgoeDB.Database, email string) (User, error) {
 
 }
 
-// func findEntryByID(client *mongo.Client, id string) (bson.M, error) {
-// 	// Access the collection
-// 	collection := client.Database(DatabaseName).Collection(DatabaseCollection)
+func FindUserByUsername(db *AlgoeDB.Database, username string) (User, error) {
 
-// 	// Perform the find query
-// 	var result bson.M
-// 	err := collection.FindOne(context.TODO(), bson.M{"id": id}).Decode(&result)
-// 	if err != nil {
-// 		return nil, err
-// 	}
+	
+	query := User{"username": username}
+	
+	
+	result := db.FindOne(query)
+	
+	if result == nil {
+		return User{}, fmt.Errorf("user not found")
+	}
+	
+	fmt.Println(result)
+	return result, nil
 
-// 	return result, nil
-// }
+}
 
-// func DoesUserExist(client *mongo.Client, email string) (bool, error) {
-// 	// Access the collection
-// 	collection := client.Database(DatabaseName).Collection(DatabaseCollection)
-
-// 	// Perform the find query
-// 	var result bson.M
-// 	err := collection.FindOne(context.TODO(), bson.M{"email": email}).Decode(&result)
-// 	if err != nil {
-// 		return false, nil
-// 	}
-
-// 	return true, nil
-// }
 
 func InsertUser(db *AlgoeDB.Database, user User) error {
 
@@ -86,3 +103,5 @@ func InsertUser(db *AlgoeDB.Database, user User) error {
 
 	return nil
 }
+
+
