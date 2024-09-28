@@ -8,7 +8,9 @@
 </head>
 <body>
     <header>
-        <button id="login-btn">Login</button>
+        <a href="login.html">
+            <button id="login-btn">Login</button>
+        </a>
     </header>
 
     <main>
