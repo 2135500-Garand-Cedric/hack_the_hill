@@ -14,7 +14,8 @@
     </header>
 
     <main>
-        <div class="mic-container">
+        <div id="transcript"></div>
+        <div class="mic-container" id="mic-container">
             <div id="wave-container-left" class="wave-container-left hidden">
                 <?php 
                     for ($i = 0; $i < 20; $i++) {
@@ -36,15 +37,16 @@
                 ?>
             </div>
         </div>
+        <div id="save-recording" class="save-recording hidden">
+            <div class="save-recording-content">
+                <p>Do you want to save the recording?</p>
+                <button id="save-btn">Save</button>
+                <button id="discard-btn">Discard</button>
+            </div>
+        </div>
     </main>
 
-    <div id="modal" class="modal hidden">
-        <div class="modal-content">
-            <p>Do you want to save the recording?</p>
-            <button id="save-btn">Save</button>
-            <button id="discard-btn">Discard</button>
-        </div>
-    </div>
+    
 
     <script src="script.js"></script>
 </body>
