@@ -18,5 +18,10 @@
 		"email": "test@test.com",
 		"password": "$2a$14$Oi6.xnkJZIgGpgqxnUINs.rsvqSdGFVsfpsc.U4Hrbw.nIjj0evLW",
 		"username": "Cedric"
+	},
+	{
+		"email": "test@test.com",
+		"password": "$2a$14$9kfYut/zlKM19h8gz9fv/e.aq28d4l4kWUSG7bE.WyuXFvEN7IkY.",
+		"username": "Cedric"
 	}
 ]
