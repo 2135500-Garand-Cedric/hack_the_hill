@@ -8,5 +8,15 @@
 		"interests": "cooking",
 		"occupation": "student",
 		"username": "coolkid123"
+	},
+	{
+		"city": "toronto/canada",
+		"dob": "2004",
+		"gender": "male",
+		"goals": "",
+		"hobbies": "egrzgreg",
+		"interests": "eragg",
+		"occupation": "egg ",
+		"username": "cedric"
 	}
 ]

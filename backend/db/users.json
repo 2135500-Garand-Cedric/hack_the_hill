@@ -23,5 +23,20 @@
 		"email": "test@test.com",
 		"password": "$2a$14$9kfYut/zlKM19h8gz9fv/e.aq28d4l4kWUSG7bE.WyuXFvEN7IkY.",
 		"username": "Cedric"
+	},
+	{
+		"email": "ewf@wrfw",
+		"password": "$2a$14$IJKhc.7o6mIGddWZgfJGoexME0Bh0neOMDen1L3xHIbarebMVWf.a",
+		"username": "rwef"
+	},
+	{
+		"email": "ewf@wrfw",
+		"password": "$2a$14$3I6KpDpF0rlWz0uJ70eMiOIU2BBMph0GEhhDcQT/qvKSzGRwiyBGa",
+		"username": "rwef"
+	},
+	{
+		"email": "saead@kwgef.com",
+		"password": "$2a$14$llKnQe79YFMTAuAG/cPfP.kbStJ/MO.NDm9fGff1TT8nAKqwjzuJe",
+		"username": "ecce"
 	}
 ]
