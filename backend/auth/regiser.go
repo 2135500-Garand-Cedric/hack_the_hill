@@ -47,5 +47,7 @@ func Register(c *fiber.Ctx) error {
 		"message": "User created",
 	})
 
+	
+
 
 }

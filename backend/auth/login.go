@@ -8,6 +8,7 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 	"golang.org/x/crypto/bcrypt"
 
+	"strings"
 	"time"
 	"fmt"
 )
@@ -85,4 +86,40 @@ func AuthenticateUser(db *AlgoeDB.Database, email, password string) (bool, error
 	}
 
 	return true, nil
+}
+
+
+func VerifyToken(c *fiber.Ctx) error {
+	token := strings.TrimSpace(c.Get("Authorization"))
+
+	if len(token) == 0 {
+		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+			"message": "Unauthorized",
+		})
+	}
+
+	token = strings.TrimPrefix(token, "Bearer ")
+
+	claims, err := jwt.Parse(token, func(token *jwt.Token) (interface{}, error) {
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
+		}
+
+		return []byte("secret"), nil
+	})
+
+	if err != nil {
+		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+			"message": "Unauthorized",
+		})
+	}
+
+	if claims.Valid {
+		c.Locals("user", claims.Claims.(jwt.MapClaims)["username"])
+		return c.Next()
+	}
+
+	return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+		"message": "Unauthorized",
+	})
 }
