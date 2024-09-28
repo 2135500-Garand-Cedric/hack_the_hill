@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>Onboarding</title>
-	<link rel="stylesheet" type="text/css" href="onboarding.css">
+	<link rel="stylesheet" type="text/css" href="css/onboarding.css">
 	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 </head>
