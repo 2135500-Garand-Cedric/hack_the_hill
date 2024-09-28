@@ -42,7 +42,13 @@ main {
 }
 
 .mic-container {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
 }
 
 .mic-btn {
@@ -51,6 +57,8 @@ main {
     padding: 20px;
     border-radius: 50%;
     cursor: pointer;
+    width: 100px;
+    height: 100px;
 }
 
 .mic-icon {
@@ -99,6 +107,34 @@ main {
     background-color: #dc3545;
     color: white;
 }
+
+/* Wave container to hold the lines */
+.wave-container-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.wave-container-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+/* Individual wave line */
+.wave {
+    width: 4px;
+    background-color: #FFD700; /* Yellow color like the image */
+    margin: 0 2px;
+}
+
+/* Hide wave container by default */
+.hidden {
+    display: none;
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

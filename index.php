@@ -13,10 +13,26 @@
 
     <main>
         <div class="mic-container">
-            <button id="record-btn" class="mic-btn">
-                <!-- <a href="https://www.flaticon.com/free-icons/microphone" title="microphone icons">Microphone icons created by Uniconlabs - Flaticon</a> -->
-                <img src="images/microphone.png" alt="Microphone Icon" class="mic-icon">
-            </button>
+            <div id="wave-container-left" class="wave-container-left hidden">
+                <?php 
+                    for ($i = 0; $i < 20; $i++) {
+                        echo "<div class='wave' id='wave-left-${i}'></div>";
+                    }
+                ?>
+            </div>
+            <div class="button-container">
+                <button id="record-btn" class="mic-btn">
+                    <!-- <a href="https://www.flaticon.com/free-icons/microphone" title="microphone icons">Microphone icons created by Uniconlabs - Flaticon</a> -->
+                    <img src="images/microphone.png" alt="Microphone Icon" class="mic-icon">
+                </button>
+            </div>
+            <div id="wave-container-right" class="wave-container-right hidden">
+                <?php 
+                    for ($i = 0; $i < 20; $i++) {
+                        echo "<div class='wave' id='wave-right-${i}'></div>";
+                    }
+                ?>
+            </div>
         </div>
     </main>
 

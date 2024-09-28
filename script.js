@@ -1,19 +1,40 @@
-let isRecording = false;
 let mediaRecorder;
 let audioChunks = [];
 
 const recordBtn = document.getElementById('record-btn');
+const waveContainerLeft = document.getElementById('wave-container-left');
+const waveContainerRight = document.getElementById('wave-container-right');
 const modal = document.getElementById('modal');
 const saveBtn = document.getElementById('save-btn');
 const discardBtn = document.getElementById('discard-btn');
 
-recordBtn.addEventListener('click', () => {
-    if (!isRecording) {
-        startRecording();
-    } else {
-        stopRecording();
-    }
-});
+let min = 50;
+let max = 100;
+
+for (let i = 0; i < 20; i++) {
+    const wave = document.getElementById('wave-right-' + i);
+    min = 50 - (2 * i);
+    max = 100 - (4 * i);
+    const randomHeight = Math.floor(Math.random() * (max - min + 1)) + min;
+    wave.style.height = randomHeight + 'px';
+}
+
+for (let i = 0; i < 20; i++) {
+    k = 19 - i;
+    const wave = document.getElementById('wave-left-' + k);
+    min = 50 - (2 * i);
+    max = 100 - (4 * i);
+    const randomHeight = Math.floor(Math.random() * (max - min + 1)) + min;
+    wave.style.height = randomHeight + 'px';
+}
+            
+
+// Add event listeners for both mouse and touch events
+recordBtn.addEventListener('mousedown', startRecording);
+recordBtn.addEventListener('mouseup', stopRecording);
+
+recordBtn.addEventListener('touchstart', startRecording);
+recordBtn.addEventListener('touchend', stopRecording);
 
 saveBtn.addEventListener('click', () => {
     saveRecording();
@@ -36,22 +57,26 @@ function startRecording() {
                 audioChunks.push(event.data);
             });
 
-            mediaRecorder.addEventListener('stop', () => {
-                modal.classList.remove('hidden');
-            });
+            // Show the wavy lines when recording starts
+            waveContainerLeft.classList.remove('hidden');
+            waveContainerRight.classList.remove('hidden');
         })
         .catch(error => {
             console.error('Error accessing microphone:', error);
         });
-
-    isRecording = true;
 }
 
 function stopRecording() {
     if (mediaRecorder) {
         mediaRecorder.stop();
+
+        mediaRecorder.addEventListener('stop', () => {
+            // Hide the wavy lines and show the save/discard prompt
+            waveContainerLeft.classList.add('hidden');
+            waveContainerRight.classList.add('hidden');
+            modal.classList.remove('hidden');
+        });
     }
-    isRecording = false;
 }
 
 function saveRecording() {
