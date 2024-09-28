@@ -25,7 +25,7 @@ require './include/configurations.php';
 
 			<div class="signup">
 				<form action="verify_signup.php" method="POST">
-					<label for="chk" aria-hidden="true"><a href="index.php"class="return-button"><i class="fa fa-arrow-left back-arrow"></i></a>Sign up</label>
+					<label for="chk" aria-hidden="true"><a href="index.php"class="return-button"></a>Sign up</label>
 					<input type="text" name="username" placeholder="Username" required="">
 					<input type="email" name="email" placeholder="Email" required="">
 					<input type="password" name="password" placeholder="Password" required="">
