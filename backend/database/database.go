@@ -15,6 +15,7 @@ type User map[string]interface{}
 type ProfilesDB []map[string]interface{}
 type Profile map[string]interface{}
 
+
 func GetDB() *AlgoeDB.Database {
 
 	config := AlgoeDB.DatabaseConfig{Path: "./db/users.json"}
@@ -36,16 +37,7 @@ func GetProfileDB() *AlgoeDB.Database {
 
 	return db
 }
-	
 
-// people := People{}
-// people = append(people, Person{"name": "Billy", "age": 27})
-// people = append(people, Person{"name": "Carisa", "age": 26})
-
-// err = db.InsertMany(people)
-// if err != nil {
-// 	log.Fatal(err)
-// }	
 
 
 func InsertProfile(db *AlgoeDB.Database, profile Profile) error {
@@ -59,6 +51,18 @@ func InsertProfile(db *AlgoeDB.Database, profile Profile) error {
 	return nil
 }
 
+func FindProfilesByUsername(db *AlgoeDB.Database, username string) (Profile, error) {
+
+	query := Profile{"username": username}
+
+	result := db.FindOne(query)
+
+	if result == nil {
+		return Profile{}, fmt.Errorf("profile not found")
+	}
+
+	return result, nil
+}
 
 func FindUserByEmail(db *AlgoeDB.Database, email string) (User, error) {
 	
