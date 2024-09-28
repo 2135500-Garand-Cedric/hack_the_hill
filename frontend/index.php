@@ -9,6 +9,8 @@ require './include/configurations.php';
     <title>Microphone Recorder</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/snackbar.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 </head>
 <body>
     <div id="snackbar"></div>
@@ -19,6 +21,15 @@ require './include/configurations.php';
 			unset($_SESSION['snackbar_message']);
 		}
 	?>
+    <!-- Sidebar -->
+    <div class="sidebar collapsed" id="sidebar">
+        <div class="toggle-btn" id="toggle-btn"><i class="fa fa-bars"></i></div>
+        <a href="#">Home</a>
+        <a href="#">Profile</a>
+        <a href="#">Settings</a>
+        <a href="#">About</a>
+    </div>
+
     <header>
         <a href="login.php">
             <button id="login-btn">Login</button>
@@ -60,5 +71,6 @@ require './include/configurations.php';
 
     <script src="js/snackbar.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/sidebar.js"></script>
 </body>
 </html>

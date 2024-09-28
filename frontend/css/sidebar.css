@@ -1,0 +1,111 @@
+.sidebar {
+    height: 100%;
+    width: 300px; /* Width when expanded */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    padding-top: 20px;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidebar.collapsed {
+    width: 100px; /* Width when collapsed */
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.toggle-btn {
+    z-index: 999;
+    color: black;
+    position: absolute;
+    top: 20px;
+    left: 230px; 
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.sidebar.collapsed .toggle-btn {
+    left: 50px; /* Adjust depending on collapsed sidebar width */
+}
+
+/* Adjust main content based on sidebar */
+.main-content {
+    margin-left: 250px; /* Width when sidebar is expanded */
+    transition: margin-left 0.5s;
+}
+
+.main-content.collapsed {
+    margin-left: 60px; /* Adjust when sidebar is collapsed */
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+    /* Sidebar when expanded in mobile view */
+    .sidebar {
+        width: 75%; /* Sidebar takes up 75% of the screen when expanded */
+    }
+
+    .sidebar.collapsed {
+        width: 100; /* Only show the logo in collapsed state */
+    }
+
+    /* Logo or toggle button visible when collapsed on mobile */
+    .sidebar.collapsed .toggle-btn {
+        left: 10px;
+        top: 10px;
+    }
+
+    /* Main content takes up full width in mobile view when sidebar is collapsed */
+    .main-content {
+        margin-left: 0;
+    }
+
+    .main-content.collapsed {
+        margin-left: 0;
+    }
+
+    /* Hide everything in collapsed sidebar except the toggle button (logo) */
+    .sidebar.collapsed a {
+        display: none;
+    }
+
+    .sidebar.collapsed .toggle-btn i, .sidebar.collapsed .toggle-btn {
+        display: block;
+    }
+
+    .sidebar.collapsed .toggle-btn {
+        color: black;
+    }
+
+    .sidebar .toggle-btn {
+        color: white;
+    }
+
+    /* Ensure the sidebar background doesn't block the screen when collapsed */
+    .sidebar.collapsed {
+        background-color: transparent;
+    }
+}
+
+/* Snackbar and other elements */
+header {
+    margin-left: 60px;
+    transition: margin-left 0.5s;
+}
+
+header.collapsed {
+    margin-left: 60px;
+}
