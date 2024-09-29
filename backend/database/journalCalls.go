@@ -84,7 +84,7 @@ func InsertSummerizedJournalEntry(db *AlgoeDB.Database, entry SumJournalEntry) e
 
 func GetTodaySummerizedJournal(db *AlgoeDB.Database, user string) (SumJournalEntry, error) {
 	
-	query := SumJournalEntry{"date": time.Now().Format("2006-01-02"), "username": user}
+	query := SumJournalEntry{"date": time.Now().Format("2006-01-02"), "username": user, "entry": 1}
 
 	result := db.FindOne(query)
 
@@ -96,16 +96,43 @@ func GetTodaySummerizedJournal(db *AlgoeDB.Database, user string) (SumJournalEnt
 	
 }
 
-func GetSummerizedJournalByDate(db *AlgoeDB.Database, user string, date string) (SumJournalDB, error) {
+func GetTodaySummerizedReflection(db *AlgoeDB.Database, user string) (SumJournalEntry, error) {
+
+	query := SumJournalEntry{"date": time.Now().Format("2006-01-02"), "username": user, "entry": 2}
+
+	result := db.FindOne(query)
+
+	if result == nil {
+		return SumJournalEntry{}, fmt.Errorf("summerized journal not found")
+	}
+
+	return result, nil
+
+}
+
+func GetSummerizedReflectionByDate(db *AlgoeDB.Database, user string, date string) (SumJournalEntry, error) {
+
+	query := SumJournalEntry{"date": date, "username": user, "entry": 2}
+
+	result := db.FindOne(query)
+	
+	if result == nil {
+		return SumJournalEntry{}, fmt.Errorf("summerized journal not found")
+	}
+	
+	return result, nil
+}
+
+func GetSummerizedJournalByDate(db *AlgoeDB.Database, user string, date string) (SumJournalEntry, error) {
 
 
 	query := SumJournalEntry{"date": date, "username": user}
 
 
-	result := db.FindMany(query)
+	result := db.FindOne(query)
 	
 	if result == nil {
-		return SumJournalDB{}, fmt.Errorf("summerized journal not found")
+		return SumJournalEntry{}, fmt.Errorf("summerized journal not found")
 	}
 	
 	return result, nil
