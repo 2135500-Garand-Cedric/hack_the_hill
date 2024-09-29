@@ -24,9 +24,11 @@ require './include/configurations.php';
     <!-- Sidebar -->
     <div class="sidebar collapsed" id="sidebar">
         <div class="toggle-btn" id="toggle-btn"><i class="fa fa-bars"></i></div>
-        <div class="icon-container collapsed" id="logo-icon"><img src="./images/logo.png" alt="logo" class="logo"></div>
-        <div class="icon-container collapsed" id="history-icon"><i class="fa fa-history history-icon"></i></div>
-        <div class="icon-container collapsed" id="cog-icon"><i class="fa fa-cog cog-icon"></i></div>
+        <div>
+            <div class="icon-container collapsed" id="logo-icon"><img src="./images/logo.png" alt="logo" class="logo"></div>
+            <div class="icon-container collapsed" id="history-icon"><i class="fa fa-history history-icon"></i></div>
+            <div class="icon-container collapsed" id="cog-icon"><i class="fa fa-cog cog-icon"></i></div>
+        </div>
     </div>
 
     <header>
