@@ -78,3 +78,16 @@ func AppendAdvice(username string) error {
 	return nil
 }
 
+func GetTodaysAdvice(c *fiber.Ctx) error {
+
+	db := database.GetAdviceDB()
+	advice, err := database.GetTodaysAdvice(db, c.Locals("user").(string))
+	
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Could not get advice",
+		})
+	}
+
+	return c.Status(fiber.StatusOK).JSON(advice)
+}

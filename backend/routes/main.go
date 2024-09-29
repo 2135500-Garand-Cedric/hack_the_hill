@@ -50,7 +50,7 @@ func Setup(app *fiber.App) {
 	api.Get("/journal", journal.GetSummerizedJournalByDate)
 
 	api.Get("/advice", profiler.GetAdvice)
-	// api.Post("/advice/generate", profiler.AppendAdvice)
+	api.Get("/getadvice", profiler.GetTodaysAdvice)
 
 
 

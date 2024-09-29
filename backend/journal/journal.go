@@ -7,6 +7,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 
 	"hackthehill/backend/ai"
+	"hackthehill/backend/profiler"
 	"hackthehill/backend/database"
 
 	
@@ -73,6 +74,14 @@ func CreateJournalEntry(c *fiber.Ctx) error {
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message": "Could not insert entry",
+		})
+	}
+
+	err = profiler.AppendAdvice(c.Locals("user").(string))
+
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Could not append advice",
 		})
 	}
 
