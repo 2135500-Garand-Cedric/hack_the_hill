@@ -51,3 +51,16 @@ func GetTodaysAdvice(db *AlgoeDB.Database, username string) (AdviceEntry, error)
 
 	return result, nil
 }
+
+func GetAdviceByDate(db *AlgoeDB.Database, username string, date string) (AdviceEntry, error) {
+
+	query := AdviceEntry{"date": date, "username": username}
+
+	result := db.FindOne(query)
+
+	if result == nil {
+		return AdviceEntry{}, fmt.Errorf("advice not found")
+	}
+
+	return result, nil
+}
