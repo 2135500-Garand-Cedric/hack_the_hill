@@ -17,6 +17,8 @@ func CleanAndFormatJSON(input string) (string, error) {
 
 	input = strings.Trim(input, " \n")
 	input = strings.ReplaceAll(input, "\n", " ")
+
+	input = "[" + input + "]"
 	return input, nil
 }
 

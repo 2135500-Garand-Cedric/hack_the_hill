@@ -21,10 +21,6 @@ func InitGroq() (*groq.Client, error) {
 
 	return client, nil
 }
-
-
-
-
 func CallLLM(prompt string, userPrompt string) (string, error) {
 
 	client, err := InitGroq()
@@ -57,6 +53,28 @@ func CallLLM(prompt string, userPrompt string) (string, error) {
 	return response.Choices[0].Message.Content, nil
 
 }
+
+
+func AggregateAdvices(data1 string, data2 string, username string) (string, error) {
+
+	db := database.GetDB()
+	userProfile, err := database.FindProfilesByUsername(db, username)
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
 
 
 func SummerizeJournalEntry(entry string, username string, entryType string) (string, error) {
