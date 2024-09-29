@@ -88,5 +88,10 @@
 		"email": "test@test.com",
 		"password": "$2a$14$OnBgmJV62IRg1YXOI38eCeP6oy52FGPa0Q3P.fKgzGIVc5gQe5JLG",
 		"username": "Test"
+	},
+	{
+		"email": "cedricgarand@hotmail2.com",
+		"password": "$2a$14$5RKBi2d9MkSZI/.YfJxCJef6XGZr1/wvhYbRrnfao98M/mrNF/VPG",
+		"username": "Test"
 	}
 ]

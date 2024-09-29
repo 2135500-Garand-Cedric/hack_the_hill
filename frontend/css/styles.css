@@ -167,13 +167,14 @@ main {
 
 .advice {
     width: 60%;
-    height: 20%;
+    height: 30%;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 20px;
     margin: 20px;
+    overflow-y: auto;
 }
 
 .advice-title {

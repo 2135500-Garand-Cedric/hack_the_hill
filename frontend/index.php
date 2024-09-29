@@ -134,7 +134,7 @@ $data = json_decode($response, true);
 $username = isset($data['username']) ? $data['username'] : "Guest";
 
 ########################################
-# Profile Info
+# Get Advice
 ########################################
 
 $api_url = "http://127.0.0.1:3000/api/getadvice";
@@ -159,14 +159,22 @@ if (curl_errno($ch)) {
     $response = ""; // Clear response on error
 }
 
-echo $response;
-
 // Close cURL session
 curl_close($ch);
 
 $advice = json_decode($response, true);
 
-echo $advice;
+$jsonString = $advice['advice'];
+
+$adviceArray = json_decode($jsonString, true);
+
+$adviceHtml = "";
+
+foreach ($adviceArray as $index => $item) {
+    $adviceText = $item['advice'];
+    $category = $item['category'];
+    $adviceHtml .= "<b>${category}: </b>${adviceText}.<br />";
+}
 
 ?>
 <!DOCTYPE html>
@@ -210,7 +218,7 @@ echo $advice;
 
     <main>
         <div class="advice-title"><b>Hi <?php echo $username ?>, today's suggestion is:</b></div>
-        <div class="advice"></div>
+        <div class="advice"><?php echo $adviceHtml; ?></div>
         <textarea id="transcript"></textarea>
         <div class="mic-container" id="mic-container">
             <div id="wave-container-left" class="wave-container-left hidden">

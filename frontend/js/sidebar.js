@@ -52,39 +52,47 @@ document.getElementById('date-picker').addEventListener('change', function() {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            console.log('API Data:', data);
+            const tasksArray = JSON.parse(data.data);
             
             // Process the data (you can modify this part to display the data in your HTML)
             if (data.error) {
                 alert(data.error);
             } else {
                 alert("working");
-                // const firstEntryDiv = document.querySelector('.first-entry');
-                // firstEntryDiv.innerHTML = `<strong>First Entry:</strong> ${data.task || 'N/A'} - ${data.description || 'N/A'}`;
-                // firstEntryDiv.classList.remove('hidden');  // Show the div if it's hidden
+                let html = "First Entry<br />";
+                tasksArray.forEach((data, index) => {
+                    // Create a new line for each task
+                    html += `<b>${data.task || 'N/A'}</b>: ${data.description || 'N/A'}<br /><br />`;
+                });
+                firstEntry.innerHTML = html;
             }
         })
-        .catch(error => console.error('Error fetching the API:', error));
+        .catch(error =>  {
+            firstEntry.innerHTML = "First Entry<br />";
+            console.error('Error fetching the API:', error)
+        });
 
     const urlw = `get_reflection_history.php?date=${encodeURIComponent(currentDate.toISOString().split('T')[0])}`;
     
     fetch(urlw)
         .then(response => response.json())
         .then(data => {
-            console.log('API Data:', data);
-            console.log(data.data)
             const tasksArray = JSON.parse(data.data);
-            console.log(tasksArray)
-            // Process the data (you can modify this part to display the data in your HTML)
             if (data.error) {
                 alert(data.error);
             } else {
-                alert("working");
-                firstEntry.innerHTML = `<strong>First Entry:<br /></strong> ${data.task || 'N/A'} - ${data.description || 'N/A'}`;
-                // firstEntryDiv.classList.remove('hidden');  // Show the div if it's hidden
+                let html = "Second Entry<br />";
+                tasksArray.forEach((data, index) => {
+                    // Create a new line for each task
+                    html += `<b>${data.task || 'N/A'}</b>: ${data.description || 'N/A'}<br /><br />`;
+                });
+                secondEntry.innerHTML = html;
             }
         })
-        .catch(error => console.error('Error fetching the API:', error));
+        .catch(error =>  {
+            secondEntry.innerHTML = "Second Entry<br />";
+            console.error('Error fetching the API:', error)
+        });
 });
 
 // Function to format the date
