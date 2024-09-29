@@ -95,10 +95,33 @@ function stopRecording() {
 function saveRecording() {
     const transcript = transcriptDiv.innerHTML;
     console.log(transcript);
+
+    // Define the URL of the PHP file
+    const phpUrl = 'save_transcript.php'; // Your PHP file
+
+    fetch(phpUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `transcript=${encodeURIComponent(transcript)}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Handle the PHP response
+        console.log('Transcript saved successfully:', data);
+    })
+    .catch(error => {
+        // Handle errors
+        console.error('Error saving transcript:', error);
+    });
 }
+
+
 
 function discardRecording() {
     audioChunks = [];
+    transcriptDiv.textContent = "";
 }
 
 // Real-time speech transcription using SpeechRecognition API

@@ -9,6 +9,8 @@ require './include/configurations.php';
     <title>Microphone Recorder</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/snackbar.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
 </head>
 <body>
     <div id="snackbar"></div>
@@ -19,6 +21,14 @@ require './include/configurations.php';
 			unset($_SESSION['snackbar_message']);
 		}
 	?>
+    <!-- Sidebar -->
+    <div class="sidebar collapsed" id="sidebar">
+        <div class="toggle-btn" id="toggle-btn"><i class="fa fa-bars"></i></div>
+        <div class="icon-container collapsed" id="logo-icon"><img src="./images/logo.png" alt="logo" class="logo"></div>
+        <div class="icon-container collapsed" id="history-icon"><i class="fa fa-history history-icon"></i></div>
+        <div class="icon-container collapsed" id="cog-icon"><i class="fa fa-cog cog-icon"></i></div>
+    </div>
+
     <header>
         <a href="login.php">
             <button id="login-btn">Login</button>
@@ -26,7 +36,7 @@ require './include/configurations.php';
     </header>
 
     <main>
-        <div id="transcript"></div>
+        <textarea id="transcript"></textarea>
         <div class="mic-container" id="mic-container">
             <div id="wave-container-left" class="wave-container-left hidden">
                 <?php 
@@ -60,5 +70,6 @@ require './include/configurations.php';
 
     <script src="js/snackbar.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/sidebar.js"></script>
 </body>
 </html>
