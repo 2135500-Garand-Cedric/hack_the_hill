@@ -10,7 +10,7 @@ require './include/configurations.php';
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/snackbar.css">
     <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
 </head>
 <body>
     <div id="snackbar"></div>
@@ -24,10 +24,9 @@ require './include/configurations.php';
     <!-- Sidebar -->
     <div class="sidebar collapsed" id="sidebar">
         <div class="toggle-btn" id="toggle-btn"><i class="fa fa-bars"></i></div>
-        <a href="#">Home</a>
-        <a href="#">Profile</a>
-        <a href="#">Settings</a>
-        <a href="#">About</a>
+        <div class="icon-container collapsed" id="logo-icon"><img src="./images/logo.png" alt="logo" class="logo"></div>
+        <div class="icon-container collapsed" id="history-icon"><i class="fa fa-history history-icon"></i></div>
+        <div class="icon-container collapsed" id="cog-icon"><i class="fa fa-cog cog-icon"></i></div>
     </div>
 
     <header>
@@ -37,7 +36,7 @@ require './include/configurations.php';
     </header>
 
     <main>
-        <div id="transcript"></div>
+        <textarea id="transcript"></textarea>
         <div class="mic-container" id="mic-container">
             <div id="wave-container-left" class="wave-container-left hidden">
                 <?php 

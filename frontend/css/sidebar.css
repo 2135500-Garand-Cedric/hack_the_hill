@@ -1,6 +1,6 @@
 .sidebar {
     height: 100%;
-    width: 300px; /* Width when expanded */
+    width: 400px; /* Width when expanded */
     position: fixed;
     top: 0;
     left: 0;
@@ -28,13 +28,31 @@
 }
 
 .toggle-btn {
+    display: flex;
+    justify-content: end;
     z-index: 999;
     color: black;
-    position: absolute;
-    top: 20px;
-    left: 230px; 
-    font-size: 20px;
+    margin-top: 10px;
+    margin-right: 30px;
+    left: 85%; 
+    font-size: 30px;
     cursor: pointer;
+}
+
+.sidebar.collapsed .toggle-btn {
+    color: white;
+    justify-content: center;
+    margin-right: 0px;
+}
+
+.history-icon {
+    color: white;
+    font-size: 40px !important;
+}
+
+.cog-icon {
+    color: white;
+    font-size: 40px !important;
 }
 
 .sidebar.collapsed .toggle-btn {
@@ -49,6 +67,25 @@
 
 .main-content.collapsed {
     margin-left: 60px; /* Adjust when sidebar is collapsed */
+}
+
+.sidebar .toggle-btn {
+    color: white;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: start;
+    padding: 20px;
+}
+
+.icon-container.collapsed {
+    justify-content: center;
 }
 
 /* Mobile view adjustments */
