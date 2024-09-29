@@ -126,14 +126,17 @@ if (curl_errno($ch)) {
 curl_close($ch);
 
 $advice = json_decode($response, true);
-$jsonString = $advice['advice'];
-$adviceArray = json_decode($jsonString, true);
 $adviceHtml = "";
 
-foreach ($adviceArray as $index => $item) {
-    $adviceText = $item['advice'];
-    $category = $item['category'];
-    $adviceHtml .= "<b>${category}: </b>${adviceText}.<br />";
+if (!empty($advice['advice'])) {
+    $jsonString = $advice['advice'];
+    $adviceArray = json_decode($jsonString, true);
+
+    foreach ($adviceArray as $index => $item) {
+        $adviceText = $item['advice'];
+        $category = $item['category'];
+        $adviceHtml .= "<b>${category}: </b>${adviceText}.<br />";
+    }
 }
 
 ?>
@@ -172,13 +175,14 @@ foreach ($adviceArray as $index => $item) {
                 <div class="date hidden" id="date"></div>
                 <div class="first-entry hidden">First Entry: <br /><?php echo $htmlFirstEntry; ?></div>
                 <div class="second-entry hidden">Second Entry: <br /><?php echo $htmlSecondEntry; ?></div>
+                <div class="advice-entry hidden">Advice: <br /><?php echo $htmlSecondEntry; ?></div>
             </div>
         </div>
     </div>
 
     <main>
         <div class="advice-title"><b>Hi <?php echo $username ?>, today's suggestion is:</b></div>
-        <div class="advice"><?php echo $adviceHtml; ?></div>
+        <div class="advice"><?php echo empty($adviceHtml) ? "Nothing so far! 😁" : $adviceHtml; ?></div>
         <textarea id="transcript"></textarea>
         <div class="mic-container" id="mic-container">
             <div id="wave-container-left" class="wave-container-left hidden">

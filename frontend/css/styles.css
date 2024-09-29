@@ -154,6 +154,11 @@ main {
     margin: 10px;
 }
 
+.advice-entry {
+    color: white;
+    margin: 10px;
+}
+
 .sidebar-subcontainer {
     width: 100%;
     display: flex;

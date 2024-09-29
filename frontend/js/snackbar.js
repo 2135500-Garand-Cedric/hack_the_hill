@@ -1,5 +1,4 @@
 function showSnackbar(message) {
-    console.log("test");
     var snackbar = document.getElementById("snackbar");
     snackbar.innerHTML = message;
     snackbar.className = "show";
