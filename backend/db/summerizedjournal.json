@@ -40,5 +40,17 @@
 		"date": "2024-09-28",
 		"entry": "2",
 		"username": "Test"
+	},
+	{
+		"data": "[{\"task\": \"8:00 am\", \"description\": \"Play Piano\"}, {\"task\": \"9:00 am\", \"description\": \"Gym\"}, {\"task\": \"6:00 pm\", \"description\": \"Healthy Dinner\"}]",
+		"date": "2024-08-27",
+		"entry": "1",
+		"username": "Cedric"
+	},
+	{
+		"data": "[{\"task\": \"Piano\", \"description\": \"Half an hour of practice\"}, {\"task\": \"Gym\", \"description\": \"Matinee workout at 10:00 AM\"}, {\"task\": \"Dinner\", \"description\": \"Enjoyed a satisfying meal\"}]",
+		"date": "2024-08-27",
+		"entry": "2",
+		"username": "Cedric"
 	}
 ]

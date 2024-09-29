@@ -65,7 +65,7 @@ func AppendAdvice(username string) error {
 	advice := database.AdviceEntry{
 		"username": username,
 		"date":     time.Now().Format("2006-01-02"),
-		"advice":   jsonData["data"].(string),
+		"advice":   ai.EnsureBrackets(jsonData["data"].(string)),
 	}
 
 	db := database.GetAdviceDB()

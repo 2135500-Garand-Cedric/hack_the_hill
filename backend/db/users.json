@@ -93,5 +93,10 @@
 		"email": "cedricgarand@hotmail2.com",
 		"password": "$2a$14$5RKBi2d9MkSZI/.YfJxCJef6XGZr1/wvhYbRrnfao98M/mrNF/VPG",
 		"username": "Test"
+	},
+	{
+		"email": "cgara093@uottawa.ca",
+		"password": "$2a$14$LHzK/NWfXBz5l3kKfuzzUO646frq1MxnXt2mMgdamcaP3dTK91gbG",
+		"username": "Cedric"
 	}
 ]

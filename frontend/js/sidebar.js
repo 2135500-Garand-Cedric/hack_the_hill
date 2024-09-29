@@ -3,6 +3,7 @@ const sidebar = document.getElementById('sidebar');
 const date = document.querySelector('.date');
 const firstEntry = document.querySelector('.first-entry');
 const secondEntry = document.querySelector('.second-entry');
+const adviceEntry = document.querySelector('.advice-entry');
 const historyIcon = document.getElementById('history-icon');
 const cogIcon = document.getElementById('cog-icon');
 const logoIcon = document.getElementById('logo-icon');
@@ -49,37 +50,57 @@ document.getElementById('date-picker').addEventListener('change', function() {
             if (data.error) {
                 alert(data.error);
             } else {
-                alert("working");
-                let html = "First Entry<br />";
+                let html = "First Entry:<br />";
                 tasksArray.forEach((data, index) => {
-                    html += `<b>${data.task || 'N/A'}</b>: ${data.description || 'N/A'}<br /><br />`;
+                    html += `<b>${data.task || 'N/A'}</b>: ${data.description || 'N/A'}<br />`;
                 });
                 firstEntry.innerHTML = html;
             }
         })
         .catch(error =>  {
-            firstEntry.innerHTML = "First Entry<br />";
+            firstEntry.innerHTML = "First Entry:<br />";
             console.error('Error fetching the API:', error)
         });
 
-    const urlw = `get_reflection_history.php?date=${encodeURIComponent(currentDate.toISOString().split('T')[0])}`;
+    const url2 = `get_reflection_history.php?date=${encodeURIComponent(currentDate.toISOString().split('T')[0])}`;
     
-    fetch(urlw)
+    fetch(url2)
         .then(response => response.json())
         .then(data => {
             const tasksArray = JSON.parse(data.data);
             if (data.error) {
                 alert(data.error);
             } else {
-                let html = "Second Entry<br />";
+                let html = "Second Entry:<br />";
                 tasksArray.forEach((data, index) => {
-                    html += `<b>${data.task || 'N/A'}</b>: ${data.description || 'N/A'}<br /><br />`;
+                    html += `<b>${data.task || 'N/A'}</b>: ${data.description || 'N/A'}<br />`;
                 });
                 secondEntry.innerHTML = html;
             }
         })
         .catch(error =>  {
-            secondEntry.innerHTML = "Second Entry<br />";
+            secondEntry.innerHTML = "Second Entry:<br />";
+            console.error('Error fetching the API:', error)
+        });
+
+    const url3 = `get_advice_history.php?date=${encodeURIComponent(currentDate.toISOString().split('T')[0])}`;
+    
+    fetch(url3)
+        .then(response => response.json())
+        .then(data => {
+            const tasksArray = JSON.parse(data.data);
+            if (data.error) {
+                alert(data.error);
+            } else {
+                let html = "Advice:<br />";
+                tasksArray.forEach((data, index) => {
+                    html += `<b>${data.task || 'N/A'}</b>: ${data.description || 'N/A'}<br />`;
+                });
+                adviceEntry.innerHTML = html;
+            }
+        })
+        .catch(error =>  {
+            adviceEntry.innerHTML = "Advice:<br />";
             console.error('Error fetching the API:', error)
         });
 });
