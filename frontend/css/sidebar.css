@@ -8,6 +8,7 @@
     padding-top: 20px;
     overflow-x: hidden;
     transition: 0.5s;
+    z-index: 100;
 }
 
 .sidebar.collapsed {
@@ -88,8 +89,37 @@
     justify-content: center;
 }
 
+.icon-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100px;
+}
+
+.information {
+    width: auto;
+}
+
+#date-picker {
+    margin-top: 10px; /* Adjust as necessary */
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    display: none;
+}
+
 /* Mobile view adjustments */
 @media (max-width: 768px) {
+
+    .icon-icon-container {
+        display: block;
+    }
+
+    .sidebar.collapsed .sidebar-subcontainer .icon-icon-container {
+        display: none;
+    }
+    
     /* Sidebar when expanded in mobile view */
     .sidebar {
         width: 75%; /* Sidebar takes up 75% of the screen when expanded */
@@ -101,8 +131,7 @@
 
     /* Logo or toggle button visible when collapsed on mobile */
     .sidebar.collapsed .toggle-btn {
-        left: 10px;
-        top: 10px;
+        margin-left: 30px;
     }
 
     /* Main content takes up full width in mobile view when sidebar is collapsed */

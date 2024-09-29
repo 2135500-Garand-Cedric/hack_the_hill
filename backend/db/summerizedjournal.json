@@ -1,0 +1,20 @@
+[
+	{
+		"data": "[{\"task\": \"Morning Routine\", \"description\": \"Go to the gym\"}, {\"task\": \"Evening Routine\", \"description\": \"Go to bed early\"}]",
+		"date": "2024-09-29",
+		"entry": "1",
+		"username": "rwef"
+	},
+	{
+		"data": "[{\"task\": \"Morning Routine\", \"description\": \"Woke up at 6:00 AM\"}]",
+		"date": "2024-09-29",
+		"entry": "2",
+		"username": "rwef"
+	},
+	{
+		"data": "[{\"task\": \"Morning Arrival\", \"description\": \"Arrived in Victorville from unknown location\"}]",
+		"date": "2024-09-29",
+		"entry": "2",
+		"username": "rwef"
+	}
+]

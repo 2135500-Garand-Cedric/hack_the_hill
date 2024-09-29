@@ -123,12 +123,13 @@ main {
 }
 
 #transcript {
-    width: 60%;
-    height: 40%;
+    width: 40%;
+    height: 10%;
     border: 1px solid black; 
     padding: 10px; 
     margin: 20px;
     background: rgb(255,255,255);
+    border-radius: 10px;
 }
 
 .icon-icon-container {
@@ -145,10 +146,17 @@ main {
 
 .date {
     color: white;
+    font-size: 25px;
 }
 
 .first-entry {
     color: white;
+    margin: 10px;
+}
+
+.second-entry {
+    color: white;
+    margin: 10px;
 }
 
 .sidebar-subcontainer {
@@ -157,13 +165,18 @@ main {
     flex-direction: row;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    #login-btn {
-        padding: 10px 15px;
-    }
+.advice {
+    width: 60%;
+    height: 20%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px;
+}
 
-    .modal-content {
-        width: 80%;
-    }
+.advice-title {
+    color: white;
+    font-size: 30px;
 }
