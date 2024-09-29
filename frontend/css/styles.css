@@ -13,7 +13,6 @@ body {
     background: linear-gradient(to bottom, rgb(24, 103, 229), rgb(0, 44, 116), rgb(0, 4, 12));
 }
 
-/* Header */
 header {
     display: flex;
     justify-content: flex-end;
@@ -33,7 +32,6 @@ header {
     background-color: #0056b3;
 }
 
-/* Main Content */
 main {
     display: flex;
     flex-direction: column;
@@ -95,7 +93,6 @@ main {
     color: white;
 }
 
-/* Wave container to hold the lines */
 .wave-container-right {
     display: flex;
     justify-content: center;
@@ -110,14 +107,12 @@ main {
     margin-right: 10px;
 }
 
-/* Individual wave line */
 .wave {
     width: 4px;
-    background-color: #FFD700; /* Yellow color like the image */
+    background-color: #FFD700;
     margin: 0 2px;
 }
 
-/* Hide wave container by default */
 .hidden {
     display: none;
 }
@@ -167,13 +162,14 @@ main {
 
 .advice {
     width: 60%;
-    height: 20%;
+    height: 30%;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 20px;
     margin: 20px;
+    overflow-y: auto;
 }
 
 .advice-title {

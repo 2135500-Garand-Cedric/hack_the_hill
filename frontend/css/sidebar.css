@@ -1,6 +1,6 @@
 .sidebar {
     height: 100%;
-    width: 400px; /* Width when expanded */
+    width: 400px;
     position: fixed;
     top: 0;
     left: 0;
@@ -12,7 +12,7 @@
 }
 
 .sidebar.collapsed {
-    width: 100px; /* Width when collapsed */
+    width: 100px;
 }
 
 .sidebar a {
@@ -57,17 +57,16 @@
 }
 
 .sidebar.collapsed .toggle-btn {
-    left: 50px; /* Adjust depending on collapsed sidebar width */
+    left: 50px;
 }
 
-/* Adjust main content based on sidebar */
 .main-content {
-    margin-left: 250px; /* Width when sidebar is expanded */
+    margin-left: 250px;
     transition: margin-left 0.5s;
 }
 
 .main-content.collapsed {
-    margin-left: 60px; /* Adjust when sidebar is collapsed */
+    margin-left: 60px;
 }
 
 .sidebar .toggle-btn {
@@ -102,14 +101,13 @@
 }
 
 #date-picker {
-    margin-top: 10px; /* Adjust as necessary */
+    margin-top: 10px;
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
     display: none;
 }
 
-/* Mobile view adjustments */
 @media (max-width: 768px) {
 
     .icon-icon-container {
@@ -120,21 +118,18 @@
         display: none;
     }
     
-    /* Sidebar when expanded in mobile view */
     .sidebar {
-        width: 75%; /* Sidebar takes up 75% of the screen when expanded */
+        width: 75%;
     }
 
     .sidebar.collapsed {
-        width: 100; /* Only show the logo in collapsed state */
+        width: 100;
     }
 
-    /* Logo or toggle button visible when collapsed on mobile */
     .sidebar.collapsed .toggle-btn {
         margin-left: 30px;
     }
 
-    /* Main content takes up full width in mobile view when sidebar is collapsed */
     .main-content {
         margin-left: 0;
     }
@@ -143,7 +138,6 @@
         margin-left: 0;
     }
 
-    /* Hide everything in collapsed sidebar except the toggle button (logo) */
     .sidebar.collapsed a {
         display: none;
     }
@@ -160,13 +154,11 @@
         color: white;
     }
 
-    /* Ensure the sidebar background doesn't block the screen when collapsed */
     .sidebar.collapsed {
         background-color: transparent;
     }
 }
 
-/* Snackbar and other elements */
 header {
     margin-left: 60px;
     transition: margin-left 0.5s;

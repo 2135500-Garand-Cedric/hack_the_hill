@@ -32,7 +32,6 @@ for (let i = 0; i < 20; i++) {
     wave.style.height = randomHeight + 'px';
 }
 
-// Add event listeners for both mouse and touch events
 recordBtn.addEventListener('mousedown', startRecording);
 recordBtn.addEventListener('mouseup', stopRecording);
 
@@ -51,8 +50,8 @@ discardBtn.addEventListener('click', () => {
     micContainer.classList.remove('hidden');
 });
 
+// The recording and transcript software was made using chatGPT
 function startRecording() {
-    // Start media recording
     navigator.mediaDevices.getUserMedia({ audio: true })
         .then(stream => {
             mediaRecorder = new MediaRecorder(stream);
@@ -63,10 +62,8 @@ function startRecording() {
                 audioChunks.push(event.data);
             });
 
-            // Start transcription (SpeechRecognition)
             startTranscription();
 
-            // Show the wavy lines when recording starts
             waveContainerLeft.classList.remove('hidden');
             waveContainerRight.classList.remove('hidden');
         })
@@ -80,10 +77,8 @@ function stopRecording() {
         mediaRecorder.stop();
 
         mediaRecorder.addEventListener('stop', () => {
-            // Stop transcription
             stopTranscription();
 
-            // Hide the wavy lines and show the save/discard prompt
             waveContainerLeft.classList.add('hidden');
             waveContainerRight.classList.add('hidden');
             saveRecordingQuestion.classList.remove('hidden');
@@ -96,8 +91,7 @@ function saveRecording() {
     const transcript = transcriptDiv.innerHTML;
     console.log(transcript);
 
-    // Define the URL of the PHP file
-    const phpUrl = 'save_transcript.php'; // Your PHP file
+    const phpUrl = 'save_transcript.php';
 
     fetch(phpUrl, {
         method: 'POST',
@@ -108,11 +102,9 @@ function saveRecording() {
     })
     .then(response => response.json())
     .then(data => {
-        // Handle the PHP response
         console.log('Transcript saved successfully:', data);
     })
     .catch(error => {
-        // Handle errors
         console.error('Error saving transcript:', error);
     });
 }
@@ -135,13 +127,11 @@ function startTranscription() {
 
     if (isRecognizing) return;
 
-    // Initialize the SpeechRecognition object
     recognition = new webkitSpeechRecognition();
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.lang = 'en-US';
 
-    // On result event, display real-time transcription
     recognition.onresult = (event) => {
         let interimTranscript = '';  // Interim result
 
