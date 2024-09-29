@@ -10,7 +10,7 @@ body {
     flex-direction: column;
     height: 100vh;
     justify-content: space-between;
-    background: #f0f0f0;
+    background: linear-gradient(to bottom, rgb(24, 103, 229), rgb(0, 44, 116), rgb(0, 4, 12));
 }
 
 /* Header */
@@ -53,18 +53,18 @@ main {
 }
 
 .mic-btn {
-    background-color: #FF4757;
+    background-color: #ffffff;
     border: none;
-    padding: 20px;
     border-radius: 50%;
     cursor: pointer;
-    width: 100px;
-    height: 100px;
+    width: 98px;
+    height: 98px;
 }
 
 .mic-icon {
-    width: 40px;
-    height: 40px;
+    width: 105px;
+    height: 105px;
+    transform: translate(-3px);
 }
 
 .hidden {
@@ -128,21 +128,13 @@ main {
     border: 1px solid black; 
     padding: 10px; 
     margin: 20px;
+    background: rgb(255,255,255);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     #login-btn {
         padding: 10px 15px;
-    }
-
-    .mic-btn {
-        padding: 15px;
-    }
-
-    .mic-icon {
-        width: 30px;
-        height: 30px;
     }
 
     .modal-content {
