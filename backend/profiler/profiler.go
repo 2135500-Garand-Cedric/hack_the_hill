@@ -55,3 +55,16 @@ func CreateProfile(c *fiber.Ctx) error {
 	})
 }
 
+func GetProfile(c *fiber.Ctx) error {
+
+	db := database.GetProfileDB()
+	profile, err := database.GetProfile(db, c.Locals("user").(string))
+	
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Could not get profile",
+		})
+	}
+
+	return c.Status(fiber.StatusOK).JSON(profile)
+}

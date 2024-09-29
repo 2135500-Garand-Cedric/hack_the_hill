@@ -59,7 +59,7 @@ func CallLLM(prompt string, userPrompt string) (string, error) {
 }
 
 
-func SummerizeJournalEntry(entry string, username string, entryType int) (string, error) {
+func SummerizeJournalEntry(entry string, username string, entryType string) (string, error) {
 
 	db := database.GetDB()
 	userProfile, err := database.FindProfilesByUsername(db, username)
@@ -70,11 +70,11 @@ func SummerizeJournalEntry(entry string, username string, entryType int) (string
 	
 	var prompt string
 
-	if entryType == 1 {		
+	if entryType == "1" {		
 		prompt = fmt.Sprintf(`You are an API who takes in a user's planned task and summarizes it into this format task:description. Feel free to expand the task and description name whatever seems right based on this person:
 		%s
 		Split the task into multiple cells. Should be ordered in chronological order. Only return JSON without text.`, userProfile)
-	} else if entryType == 2 {
+	} else if entryType == "2" {
 
 		prompt = fmt.Sprintf(`You are an API who takes in a user's reflections of the day and summarizes it into this format task:description. Feel free to expand the task and description name whatever seems right based on this person:
 		%s
