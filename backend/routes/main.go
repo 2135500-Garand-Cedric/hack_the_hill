@@ -40,6 +40,11 @@ func Setup(app *fiber.App) {
 	api.Post("/createjournalentry", journal.CreateJournalEntry)
 
 	api.Get("/getsidebardata", journal.GetTodaySummerizedJournal)
+	api.Get("/getreflectiondata", journal.GetTodaySummerizedReflection)
+
+
+	api.Get("/reflection", journal.GetSummerizedReflectionByDate)
+	api.Get("/journal", journal.GetSummerizedJournalByDate)
 
 
 }

@@ -96,7 +96,6 @@ func CreateSidebarEntry(data string, username string, entryNum int) error {
 
 	cleanedJSON, err := ai.CleanAndFormatJSON(data)
 	if err != nil {
-		fmt.Println(err)
 		return err
 	}	
 
@@ -134,8 +133,6 @@ func GetTodaySummerizedJournal(c *fiber.Ctx) error {
 
 	dat, err := ai.CleanAndFormatJSON(result["data"].( string))
 
-	fmt.Println(dat)
-	fmt.Println("err")
 
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
@@ -149,4 +146,95 @@ func GetTodaySummerizedJournal(c *fiber.Ctx) error {
 
 	return c.Status(fiber.StatusOK).JSON(data)
 }
+
+func GetTodaySummerizedReflection(c *fiber.Ctx) error {
+
+	db := database.GetSummerizedJournalDB()
+
+	result, err := database.GetTodaySummerizedReflection(db, c.Locals("user").(string))
 	
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Could not get today's reflection",
+		})
+	}
+
+	fmt.Println(result["data"].( string))
+
+	dat, err := ai.CleanAndFormatJSON(result["data"].( string))
+
+
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Could not convert to valid JSON",
+		})
+	}
+
+	data := map[string]interface{}{
+		"data": dat,
+	}
+
+	return c.Status(fiber.StatusOK).JSON(data)
+}
+
+
+
+func GetSummerizedJournalByDate(c *fiber.Ctx) error {
+	date := c.Query("date")
+	db := database.GetSummerizedJournalDB()
+
+	result, err := database.GetSummerizedJournalByDate(db, c.Locals("user").(string), date)
+	
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Could not get journal by date",
+		})
+	}
+
+	fmt.Println(result["data"].( string))
+
+	dat, err := ai.CleanAndFormatJSON(result["data"].( string))
+
+
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Could not convert to valid JSON",
+		})
+	}
+
+	data := map[string]interface{}{	
+		"data": dat,
+	}
+
+	return c.Status(fiber.StatusOK).JSON(data)
+}
+
+func GetSummerizedReflectionByDate(c *fiber.Ctx) error {
+	date := c.Query("date")
+	db := database.GetSummerizedJournalDB()
+
+	result, err := database.GetSummerizedReflectionByDate(db, c.Locals("user").(string), date)
+	
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Could not get reflection by date",
+		})
+	}
+
+	fmt.Println(result["data"].( string))
+
+	dat, err := ai.CleanAndFormatJSON(result["data"].( string))
+
+
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Could not convert to valid JSON",
+		})
+	}
+
+	data := map[string]interface{}{
+		"data": dat,
+	}
+
+	return c.Status(fiber.StatusOK).JSON(data)
+}

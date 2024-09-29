@@ -1,8 +1,0 @@
-[
-	{
-		"data": "{\"id\":1,\"task\":\"WakeUp\",\"description\":\"Wakeupat8:00AM\"},{\"id\":2,\"task\":\"AttendSchool\",\"description\":\"Attendschoolat9:00AM\"},{\"id\":3,\"task\":\"EatLunch\",\"description\":\"Eatlunchat4:00PM\"},{\"id\":4,\"task\":\"WorkonMath\",\"description\":\"Spend2hoursworkingonmathafterlunch\"},{\"id\":5,\"task\":\"WatchMovie\",\"description\":\"Watchamovietorelaxandunwind\"},{\"id\":6,\"task\":\"GotoBed\",\"description\":\"Gotobedaround11:00PM\"}",
-		"date": "2024-09-28",
-		"entry": 1,
-		"username": "cedric"
-	}
-]
