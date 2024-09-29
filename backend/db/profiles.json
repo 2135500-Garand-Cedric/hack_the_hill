@@ -78,5 +78,15 @@
 		"interests": "erg",
 		"occupation": "erg",
 		"username": "Test"
+	},
+	{
+		"city": "Ottawa/Canada",
+		"dob": "2004",
+		"gender": "Prefer not say",
+		"goals": "To play piano (and be good) by 2025",
+		"hobbies": "Piano, golf, badminton",
+		"interests": "reading, programming",
+		"occupation": "student, part-time",
+		"username": "Cedric"
 	}
 ]

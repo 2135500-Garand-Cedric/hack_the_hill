@@ -46,5 +46,17 @@
 		"date": "2024-09-29",
 		"entry": "2",
 		"username": "Test"
+	},
+	{
+		"data": "Hey so today I'm planning on playing piano for an hour and then going to the gym and finally eating a healthy dinner.",
+		"date": "2024-08-27",
+		"entry": "1",
+		"username": "Cedric"
+	},
+	{
+		"data": "Hey so I was only able to do half an hour of piano, then I was able to go to gym at 10 and finally I really ate a good dinner.",
+		"date": "2024-08-27",
+		"entry": "2",
+		"username": "Cedric"
 	}
 ]
