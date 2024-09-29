@@ -38,7 +38,18 @@ func GetProfileDB() *AlgoeDB.Database {
 	return db
 }
 
+func GetProfile(db *AlgoeDB.Database, username string) (Profile, error) {
 
+	query := Profile{"username": username}
+
+	result := db.FindOne(query)
+
+	if result == nil {
+		return Profile{}, fmt.Errorf("profile not found")
+	}
+
+	return result, nil
+}
 
 func InsertProfile(db *AlgoeDB.Database, profile Profile) error {
 

@@ -35,6 +35,9 @@ func Setup(app *fiber.App) {
 
 	api := app.Group("/api", auth.VerifyToken)
 	api.Get("/check", auth.TestEndpoint)
+
+
+	api.Get("/profile", profiler.GetProfile)
 	api.Post("/generateprofile", profiler.CreateProfile)
 
 	api.Post("/createjournalentry", journal.CreateJournalEntry)

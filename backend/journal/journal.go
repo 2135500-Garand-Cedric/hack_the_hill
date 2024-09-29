@@ -44,7 +44,7 @@ func CreateJournalEntry(c *fiber.Ctx) error {
 
 	entry := database.JournalEntry{
 		"username": c.Locals("user").(string),
-		"entry": 1,
+		"entry": "1",
 		"date": time.Now().Format("2006-01-02"),
 		"data": data,
 	}
@@ -52,16 +52,16 @@ func CreateJournalEntry(c *fiber.Ctx) error {
 	if check {
 		entry = database.JournalEntry{
 			"username": c.Locals("user").(string),
-			"entry": 2,
+			"entry": "2",
 			"date": time.Now().Format("2006-01-02"),
 			"data": data,
 		}
 	}
 
-	entryNum := entry["entry"].(int)
+	entryNum := entry["entry"].(string)
 
 
-	err = CreateSidebarEntry(data, c.Locals("user").(string), entryNum )
+	err = CreateSidebarEntry(data, c.Locals("user").(string), entryNum)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message": "Could not create sidebar entry",
@@ -83,7 +83,7 @@ func CreateJournalEntry(c *fiber.Ctx) error {
 }
 
 
-func CreateSidebarEntry(data string, username string, entryNum int) error {
+func CreateSidebarEntry(data string, username string, entryNum string) error {
 
 	data, err := ai.SummerizeJournalEntry(data, username, entryNum)
 
