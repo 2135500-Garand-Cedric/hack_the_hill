@@ -91,7 +91,6 @@ func FindUserByUsername(db *AlgoeDB.Database, username string) (User, error) {
 		return User{}, fmt.Errorf("user not found")
 	}
 	
-	fmt.Println(result)
 	return result, nil
 
 }

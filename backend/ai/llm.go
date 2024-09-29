@@ -43,7 +43,12 @@ func CallLLM(prompt string, userPrompt string) (string, error) {
 				Role:    "user",
 				Content: userPrompt,
 			},
+			{
+				Role: "assistant",
+				Content: "[",
+			},
 		},
+		Stop: []string{"]"},
 	})
 	if err != nil {
 		panic(err)
