@@ -2,6 +2,7 @@ let mediaRecorder;
 let audioChunks = [];
 let recognition;
 let isRecognizing = false;
+let fullTranscript = '';
 
 const recordBtn = document.getElementById('record-btn');
 const waveContainerLeft = document.getElementById('wave-container-left');
@@ -107,10 +108,10 @@ function saveRecording() {
     .catch(error => {
         console.error('Error saving transcript:', error);
     });
+    transcriptDiv.textContent = "";
+    fullTranscript.textContent = "";
+    fullTranscript = "";
 }
-
-
-let fullTranscript = '';  // Store the accumulated transcription
 
 function discardRecording() {
     audioChunks = [];
