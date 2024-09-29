@@ -1,4 +1,3 @@
-// Toggle sidebar function
 const toggleBtn = document.getElementById('toggle-btn');
 const sidebar = document.getElementById('sidebar');
 const date = document.querySelector('.date');
@@ -22,18 +21,12 @@ toggleBtn.addEventListener('click', function() {
 
 document.getElementById('history-icon').addEventListener('click', function() {
     if ((datePicker.style.display === 'none' || datePicker.style.display === '') && !sidebar.classList.contains('collapsed')) {
-        // Get the position of the history icon
         const iconPosition = historyIcon.getBoundingClientRect();
-
-        // Display the date picker
         datePicker.style.display = 'block';
 
-        // Position the date picker to the right of the icon
         datePicker.style.position = 'absolute';
-        datePicker.style.left = iconPosition.right + 'px';  // Position to the right
-        datePicker.style.top = (iconPosition.top + 15) + 'px';     // Align top with icon
-
-        // Focus on the date picker to automatically show the calendar
+        datePicker.style.left = iconPosition.right + 'px';
+        datePicker.style.top = (iconPosition.top + 15) + 'px';
         datePicker.focus();
     } else {
         datePicker.style.display = 'none';
@@ -53,15 +46,12 @@ document.getElementById('date-picker').addEventListener('change', function() {
         .then(response => response.json())
         .then(data => {
             const tasksArray = JSON.parse(data.data);
-            
-            // Process the data (you can modify this part to display the data in your HTML)
             if (data.error) {
                 alert(data.error);
             } else {
                 alert("working");
                 let html = "First Entry<br />";
                 tasksArray.forEach((data, index) => {
-                    // Create a new line for each task
                     html += `<b>${data.task || 'N/A'}</b>: ${data.description || 'N/A'}<br /><br />`;
                 });
                 firstEntry.innerHTML = html;
@@ -83,7 +73,6 @@ document.getElementById('date-picker').addEventListener('change', function() {
             } else {
                 let html = "Second Entry<br />";
                 tasksArray.forEach((data, index) => {
-                    // Create a new line for each task
                     html += `<b>${data.task || 'N/A'}</b>: ${data.description || 'N/A'}<br /><br />`;
                 });
                 secondEntry.innerHTML = html;
@@ -95,7 +84,6 @@ document.getElementById('date-picker').addEventListener('change', function() {
         });
 });
 
-// Function to format the date
 function formatDate(date) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return date.toLocaleDateString(undefined, options);
