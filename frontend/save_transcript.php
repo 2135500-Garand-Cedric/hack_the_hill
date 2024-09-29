@@ -23,14 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'Authorization: Bearer ' . $token
         ]);
 
-        // Execute the cURL request
         $response = curl_exec($ch);
         $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-        // Close the cURL session
         curl_close($ch);
-
-        // Send the response back to the JavaScript
         if ($http_code === 200) {
             echo json_encode(['status' => 'success', 'message' => 'Transcript saved successfully']);
         } else {
@@ -40,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['status' => 'error', 'message' => 'Transcript is empty']);
     }
 } else {
-    // Invalid request method
     echo json_encode(['status' => 'error', 'message' => 'Invalid request method']);
 }
 ?>

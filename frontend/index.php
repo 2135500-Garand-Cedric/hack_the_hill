@@ -3,45 +3,34 @@ require './include/configurations.php';
 require './include/header.php';
 
 
-$api_url = "http://127.0.0.1:3000/api/getsidebardata"; // Replace with your API URL
+$api_url = "http://127.0.0.1:3000/api/getsidebardata";
 $token = $_SESSION['token'];
 
-// Initialize cURL
 $ch = curl_init($api_url);
 
-// Set cURL options
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Authorization: Bearer ' . $token,
     'Content-Type: application/json'
 ]);
 
-// Execute the cURL request
 $response = curl_exec($ch);
 
-// Check for errors
 if (curl_errno($ch)) {
     echo 'Error:' . curl_error($ch);
-    $response = ""; // Clear response on error
+    $response = "";
 }
 
-// Close cURL session
 curl_close($ch);
 
-// Step 1: Decode the outer JSON
 $outerData = json_decode($response, true);
-
 $htmlFirstEntry = "";
 
-// Step 2: Access the inner JSON string
 if (!empty($outerData['data'])) {
     $innerJsonString = $outerData['data'];
 
-    // Step 3: Decode the inner JSON string
     $tasks = json_decode($innerJsonString, true);
 
-    // Access each task and its description
     foreach ($tasks as $task) {
         $taskName = $task['task'];
         $description = $task['description'];
@@ -56,46 +45,33 @@ if (!empty($outerData['data'])) {
 
 $api_url = "http://127.0.0.1:3000/api/getreflectiondata";
 
-// Initialize cURL
 $ch = curl_init($api_url);
-
-// Set cURL options
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Authorization: Bearer ' . $token,
     'Content-Type: application/json'
 ]);
 
-// Execute the cURL request
 $response = curl_exec($ch);
 
-// Check for errors
 if (curl_errno($ch)) {
     echo 'Error:' . curl_error($ch);
-    $response = ""; // Clear response on error
+    $response = "";
 }
 
-// Close cURL session
 curl_close($ch);
 
-// Step 1: Decode the outer JSON
 $outerData = json_decode($response, true);
-
 $htmlSecondEntry = "";
 
-// Step 2: Access the inner JSON string
 if (!empty($outerData['data'])) {
     $innerJsonString = $outerData['data'];
 
-    // Step 3: Decode the inner JSON string
     $tasks = json_decode($innerJsonString, true);
 
-    // Access each task and its description
     foreach ($tasks as $task) {
         $taskName = $task['task'];
         $description = $task['description'];
-
         $htmlSecondEntry .= "<b>${taskName}</b>: ${description}<br />";
     }
 }
@@ -106,31 +82,24 @@ if (!empty($outerData['data'])) {
 
 $api_url = "http://127.0.0.1:3000/api/profile";
 
-// Initialize cURL
 $ch = curl_init($api_url);
 
-// Set cURL options
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Authorization: Bearer ' . $token,
     'Content-Type: application/json'
 ]);
 
-// Execute the cURL request
 $response = curl_exec($ch);
 
-// Check for errors
 if (curl_errno($ch)) {
     echo 'Error:' . curl_error($ch);
-    $response = ""; // Clear response on error
+    $response = "";
 }
 
-// Close cURL session
 curl_close($ch);
 
 $data = json_decode($response, true);
-
 $username = isset($data['username']) ? $data['username'] : "Guest";
 
 ########################################
@@ -139,35 +108,26 @@ $username = isset($data['username']) ? $data['username'] : "Guest";
 
 $api_url = "http://127.0.0.1:3000/api/getadvice";
 
-// Initialize cURL
 $ch = curl_init($api_url);
 
-// Set cURL options
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Authorization: Bearer ' . $token,
     'Content-Type: application/json'
 ]);
 
-// Execute the cURL request
 $response = curl_exec($ch);
 
-// Check for errors
 if (curl_errno($ch)) {
     echo 'Error:' . curl_error($ch);
-    $response = ""; // Clear response on error
+    $response = "";
 }
 
-// Close cURL session
 curl_close($ch);
 
 $advice = json_decode($response, true);
-
 $jsonString = $advice['advice'];
-
 $adviceArray = json_decode($jsonString, true);
-
 $adviceHtml = "";
 
 foreach ($adviceArray as $index => $item) {
