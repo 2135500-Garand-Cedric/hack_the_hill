@@ -60,20 +60,30 @@ func AggregateAdvices(data1 string, data2 string, username string) (string, erro
 	db := database.GetDB()
 	userProfile, err := database.FindProfilesByUsername(db, username)
 
+	if err != nil {
+		return "", err
+	}	
 
+	var prompt = `
+	"You are now Avalanche's API. Avalanche is an app that gives advice to its users by creating a profile of their character based on their hobbies, occupation, goals (very important), date of birth, location, gender. The user of the app creates 2 daily journal entries (a plan and reflection for the day) and you will use these entries in combination with their profile to recommend small-scale advice for them to marginally improve their life. A huge focus of this app is about making small steps everyday to help the user realistically reach their goal (think of the analogy 1.01^365). You are only allowed to return JSON output without any other text and make sure to have [ and ] and proper JSON format. Also split out the advice into multiple parts. Here is an example format:
+	
+	[{\"advice\": \"Consider going to bed earlier, like 11pm, to get around 7-8 hours of sleep. This can help you feel more refreshed in the morning and improve your ability to focus during the day.\", \"category\": \"Sleep\"}, {\"advice\": \"To balance your work and personal life, try setting a specific schedule for work and personal activities. This can help you stay on track and avoid procrastination.\", \"category\": \"Work-Life Balance\"}]
+	
+	Use this as a guide. PLEASE provide at least two pieces of advice.
+	The following is information about the user's profile and journal entries:"
+	`
+	
 
+	userPrompt := fmt.Sprintf("Profile: %s, Journal 1: %s, Journal 2: %s", userProfile, data1, data2)
+	response, err := CallLLM(prompt, userPrompt)
 
+	if err != nil {
+		fmt.Println("WTF")
+		return "", fmt.Errorf("could not initialize groq client: %w", err)
+	}
 
-
+	return response, nil
 }
-
-
-
-
-
-
-
-
 
 
 

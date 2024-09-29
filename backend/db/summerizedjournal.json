@@ -4,5 +4,23 @@
 		"date": "2024-09-28",
 		"entry": "1",
 		"username": "coolkid123"
+	},
+	{
+		"data": "[{\"task\": \"Wake Up\", \"description\": \"Woke up at 8:00 AM\"}, {\"task\": \"Go to School\", \"description\": \"Attend school at 09:00 AM\"}, {\"task\": \"Eat\", \"description\": \"Have a meal at 16:00 PM\"}, {\"task\": \"Work on Math\", \"description\": \"Spend 2 hours working on math\"}, {\"task\": \"Watch a Movie\", \"description\": \"Relax with a movie\"}, {\"task\": \"Sleep\", \"description\": \"Go to bed at around 23:00 PM\"}]",
+		"date": "2024-09-28",
+		"entry": "2",
+		"username": "coolkid123"
+	},
+	{
+		"data": "[{\"task\": \"Wake Up\", \"description\": \"Woke up at 8:00 AM\"}, {\"task\": \"Go to School\", \"description\": \"Attend school at 09:00 AM\"}, {\"task\": \"Eat\", \"description\": \"Have a meal at 16:00 PM\"}, {\"task\": \"Work on Math\", \"description\": \"Spend 2 hours working on math\"}, {\"task\": \"Watch a Movie\", \"description\": \"Relax with a movie\"}, {\"task\": \"Sleep\", \"description\": \"Go to bed at around 23:00 PM\"}]",
+		"date": "2024-09-29",
+		"entry": "1",
+		"username": "coolkid123"
+	},
+	{
+		"data": "[{\"Task\": \"Work\", \"Description\": \"Worked on a project with friends from 11am to 8pm\"}, {\"Task\": \"Dinner\", \"Description\": \"Had dinner at 8pm with quesadillas\"}, {\"Task\": \"Sleep\", \"Description\": \"Went to bed at 2am\"}]",
+		"date": "2024-09-29",
+		"entry": "2",
+		"username": "coolkid123"
 	}
 ]
