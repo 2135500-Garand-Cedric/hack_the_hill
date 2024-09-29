@@ -36,7 +36,6 @@ func GetTodayDataEntry1(db *AlgoeDB.Database, username string) (JournalEntry, er
 		return JournalEntry{}, fmt.Errorf("journal not found")
 	}
 	
-	fmt.Println(result)
 	return result, nil
 }
 
@@ -50,7 +49,6 @@ func GetTodayDataEntry2(db *AlgoeDB.Database, username string) (JournalEntry, er
 		return JournalEntry{}, fmt.Errorf("journal not found")
 	}
 	
-	fmt.Println(result)
 	return result, nil
 }
 
@@ -140,6 +138,7 @@ func GetTodaySummerizedReflection(db *AlgoeDB.Database, user string) (SumJournal
 
 func GetSummerizedReflectionByDate(db *AlgoeDB.Database, user string, date string) (SumJournalEntry, error) {
 
+	fmt.Println(date)
 	query := SumJournalEntry{"date": date, "username": user, "entry": "2"}
 
 	result := db.FindOne(query)
@@ -165,3 +164,4 @@ func GetSummerizedJournalByDate(db *AlgoeDB.Database, user string, date string) 
 	
 	return result, nil
 }	
+

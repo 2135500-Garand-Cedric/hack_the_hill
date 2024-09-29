@@ -209,11 +209,19 @@ func GetSummerizedJournalByDate(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(data)
 }
 
-func GetSummerizedReflectionByDate(c *fiber.Ctx) error {
+func GetSummerizedReflectionDate(c *fiber.Ctx) error {
 	date := c.Query("date")
+	convertDate, err := time.Parse("2006-01-02", date)
+
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Could not get reflection by date",
+		})
+	}	
+	fmt.Println(convertDate.Format("2006-01-02"))
 	db := database.GetSummerizedJournalDB()
 
-	result, err := database.GetSummerizedReflectionByDate(db, c.Locals("user").(string), date)
+	result, err := database.GetSummerizedReflectionByDate(db, c.Locals("user").(string), convertDate.Format("2006-01-02"))
 	
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{

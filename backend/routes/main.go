@@ -46,8 +46,15 @@ func Setup(app *fiber.App) {
 	api.Get("/getreflectiondata", journal.GetTodaySummerizedReflection)
 
 
-	api.Get("/reflection", journal.GetSummerizedReflectionByDate)
+	api.Get("/reflection", journal.GetSummerizedReflectionDate)
 	api.Get("/journal", journal.GetSummerizedJournalByDate)
+
+	api.Get("/advice", profiler.GetAdvice)
+	// api.Post("/advice/generate", profiler.AppendAdvice)
+
+
+
+	api.Get("/testAdvice", profiler.GetAdvice)
 
 
 }
