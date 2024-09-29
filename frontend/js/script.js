@@ -118,13 +118,15 @@ function saveRecording() {
 }
 
 
+let fullTranscript = '';  // Store the accumulated transcription
 
 function discardRecording() {
     audioChunks = [];
     transcriptDiv.textContent = "";
+    fullTranscript.textContent = "";
+    fullTranscript = "";
 }
 
-// Real-time speech transcription using SpeechRecognition API
 function startTranscription() {
     if (!('webkitSpeechRecognition' in window)) {
         alert('Your browser does not support speech recognition.');
@@ -141,11 +143,28 @@ function startTranscription() {
 
     // On result event, display real-time transcription
     recognition.onresult = (event) => {
-        let transcript = '';
+        let interimTranscript = '';  // Interim result
+
         for (let i = event.resultIndex; i < event.results.length; i++) {
-            transcript += event.results[i][0].transcript;
+            let transcript = event.results[i][0].transcript;
+
+            // Detect if a new sentence starts (based on capitalization of the first letter)
+            if (transcript && transcript[0] === transcript[0].toUpperCase()) {
+                // Add space between the previous sentence and the new one
+                if (fullTranscript.length > 0 && !fullTranscript.endsWith(' ')) {
+                    fullTranscript += ' ';
+                }
+            }
+
+            if (event.results[i].isFinal) {
+                fullTranscript += transcript.trim();  // Add final results to full transcript
+            } else {
+                interimTranscript += transcript;  // Handle interim results
+            }
         }
-        transcriptDiv.textContent = transcript;
+        
+        // Display full transcript + interim
+        transcriptDiv.textContent = fullTranscript + interimTranscript;
     };
 
     recognition.onerror = (event) => {
