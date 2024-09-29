@@ -41,15 +41,50 @@ document.getElementById('history-icon').addEventListener('click', function() {
 });
 
 document.getElementById('date-picker').addEventListener('change', function() {
-    // Get the selected date
     const selectedDate = this.value;
     datePicker.style.display = 'none';
+    let currentDate = new Date(selectedDate);
+    currentDate.setHours(currentDate.getHours() + 4);
+    dateDiv.innerHTML = formatDate(new Date(currentDate));
 
-    // Do something with the selected date
-    console.log('Selected date:', selectedDate);
+    const url = `get_journal_history.php?date=${encodeURIComponent(currentDate.toISOString().split('T')[0])}`;
+    
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log('API Data:', data);
+            
+            // Process the data (you can modify this part to display the data in your HTML)
+            if (data.error) {
+                alert(data.error);
+            } else {
+                alert("working");
+                // const firstEntryDiv = document.querySelector('.first-entry');
+                // firstEntryDiv.innerHTML = `<strong>First Entry:</strong> ${data.task || 'N/A'} - ${data.description || 'N/A'}`;
+                // firstEntryDiv.classList.remove('hidden');  // Show the div if it's hidden
+            }
+        })
+        .catch(error => console.error('Error fetching the API:', error));
 
-    // You can add any JS logic here, like calling a function or updating the DOM
-    alert('Date selected: ' + selectedDate);
+    const urlw = `get_reflection_history.php?date=${encodeURIComponent(currentDate.toISOString().split('T')[0])}`;
+    
+    fetch(urlw)
+        .then(response => response.json())
+        .then(data => {
+            console.log('API Data:', data);
+            console.log(data.data)
+            const tasksArray = JSON.parse(data.data);
+            console.log(tasksArray)
+            // Process the data (you can modify this part to display the data in your HTML)
+            if (data.error) {
+                alert(data.error);
+            } else {
+                alert("working");
+                firstEntry.innerHTML = `<strong>First Entry:<br /></strong> ${data.task || 'N/A'} - ${data.description || 'N/A'}`;
+                // firstEntryDiv.classList.remove('hidden');  // Show the div if it's hidden
+            }
+        })
+        .catch(error => console.error('Error fetching the API:', error));
 });
 
 // Function to format the date
@@ -57,9 +92,8 @@ function formatDate(date) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return date.toLocaleDateString(undefined, options);
 }
-// Get the current date
-const currentDate = new Date();
-// Get the date div
 const dateDiv = document.querySelector('.date');
-// Set the inner HTML of the date div to the current date
+
+const currentDate = new Date();
+
 dateDiv.innerHTML = formatDate(currentDate);

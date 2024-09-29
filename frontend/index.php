@@ -1,5 +1,6 @@
 <?php
 require './include/configurations.php';
+require './include/header.php';
 
 
 $api_url = "http://127.0.0.1:3000/api/getsidebardata"; // Replace with your API URL
@@ -130,8 +131,42 @@ curl_close($ch);
 
 $data = json_decode($response, true);
 
-$username = $data['username'];
+$username = isset($data['username']) ? $data['username'] : "Guest";
 
+########################################
+# Profile Info
+########################################
+
+$api_url = "http://127.0.0.1:3000/api/getadvice";
+
+// Initialize cURL
+$ch = curl_init($api_url);
+
+// Set cURL options
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Authorization: Bearer ' . $token,
+    'Content-Type: application/json'
+]);
+
+// Execute the cURL request
+$response = curl_exec($ch);
+
+// Check for errors
+if (curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+    $response = ""; // Clear response on error
+}
+
+echo $response;
+
+// Close cURL session
+curl_close($ch);
+
+$advice = json_decode($response, true);
+
+echo $advice;
 
 ?>
 <!DOCTYPE html>
@@ -163,10 +198,10 @@ $username = $data['username'];
                 <div class="icon-container collapsed" id="logo-icon"><img src="./images/logo.png" alt="logo" class="logo"></div>
                 <div class="icon-container collapsed" id="history-icon"><i class="fa fa-history history-icon"></i></div>
                 <input type="date" id="date-picker" class="hidden" style="display: none;">
-                <div class="icon-container collapsed" id="cog-icon"><i class="fa fa-cog cog-icon"></i></div>
+                <div class="icon-container collapsed" id="cog-icon"><a href="logout.php"><i class="fa fa-cog cog-icon"></i></a></div>
             </div>
             <div class="information">
-                <div class="date hidden"></div>
+                <div class="date hidden" id="date"></div>
                 <div class="first-entry hidden">First Entry: <br /><?php echo $htmlFirstEntry; ?></div>
                 <div class="second-entry hidden">Second Entry: <br /><?php echo $htmlSecondEntry; ?></div>
             </div>

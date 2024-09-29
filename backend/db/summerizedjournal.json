@@ -22,5 +22,35 @@
 		"date": "2024-09-29",
 		"entry": "2",
 		"username": "coolkid123"
+	},
+	{
+		"data": "[{ \"Task\" : \"Morning\", \"Description\" : \"Woke up at 11am and went to work on a project with friends\" }, { \"Task\" : \"Lunch\", \"Description\" : \"Had scrambled eggs, potato wedges and sausage at 3pm\" }, { \"Task\" : \"Work\", \"Description\" : \"Continued working on coding project after lunch\" }, { \"Task\" : \"Dinner\", \"Description\" : \"Took a break for dinner at 8pm and had quesadillas\" }, { \"Task\" : \"Night\", \"Description\" : \"Going to bed at 2am\" }]",
+		"date": "2024-09-28",
+		"entry": "1",
+		"username": "cedric"
+	},
+	{
+		"data": "[\"Task\": {\"name\": \"Get out of bed\" ,\"description\": \"Started the day at 11am\"}]",
+		"date": "2024-09-28",
+		"entry": "2",
+		"username": "cedric"
+	},
+	{
+		"data": "[{\"task\": \"Morning Routine\", \"description\": \"Woke up and got coffee\"}]",
+		"date": "2024-09-29",
+		"entry": "2",
+		"username": "rwef"
+	},
+	{
+		"data": "[{\"task\": \"Wake Up\", \"description\": \"6:00 AM\"}, {\"task\": \"Gym\", \"description\": \"Later Today\"}]",
+		"date": "2024-09-28",
+		"entry": "1",
+		"username": ""
+	},
+	{
+		"data": "[{\"task\": \"12:00 PM - Gym\", \"description\": \"Worked out at the gym\"}, {\"task\": \"11:00 PM\", \"description\": \"Plan to go to sleep\"}]",
+		"date": "2024-09-28",
+		"entry": "2",
+		"username": ""
 	}
 ]
