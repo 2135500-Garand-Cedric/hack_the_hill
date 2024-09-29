@@ -45,6 +45,7 @@ func GenerateAdvice(username string) (map[string]interface{}, error) {
 	
 	response, err := ai.AggregateAdvices(data1["data"].(string), data2["data"].(string), username)
 	
+	response = ai.EnsureBrackets(response)
 
 	if err != nil {
 		return nil, err
@@ -65,7 +66,7 @@ func AppendAdvice(username string) error {
 	advice := database.AdviceEntry{
 		"username": username,
 		"date":     time.Now().Format("2006-01-02"),
-		"advice":   jsonData["data"].(string),
+		"advice":   ai.EnsureBrackets(jsonData["data"].(string)),
 	}
 
 	db := database.GetAdviceDB()
