@@ -7,7 +7,7 @@ body {
 	align-items: center;
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
-	background: linear-gradient(to bottom, #24b6f8, #1a0dab, #24243e);
+	background: linear-gradient(to bottom, rgb(24, 103, 229), rgb(0, 44, 116), rgb(0, 4, 12));
 }
 
 .main {
@@ -78,7 +78,7 @@ button:hover {
 
 .login {
 	height: 510px;
-	background: linear-gradient(to bottom, #24b6f8, #1a0dab, #24243e);
+	background: linear-gradient(to bottom, rgb(24, 103, 229), rgb(0, 44, 116), rgb(0, 4, 12));
 	border-radius: 60% / 10%;
 	transform: translateY(-180px);
 	transition: .8s ease-in-out;
