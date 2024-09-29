@@ -6,6 +6,7 @@ import (
 	"hackthehill/backend/auth"
 
 	"hackthehill/backend/profiler"
+	"hackthehill/backend/journal"
 
 )	
 
@@ -34,7 +35,19 @@ func Setup(app *fiber.App) {
 
 	api := app.Group("/api", auth.VerifyToken)
 	api.Get("/check", auth.TestEndpoint)
+
+
+	api.Get("/profile", profiler.GetProfile)
 	api.Post("/generateprofile", profiler.CreateProfile)
+
+	api.Post("/createjournalentry", journal.CreateJournalEntry)
+
+	api.Get("/getsidebardata", journal.GetTodaySummerizedJournal)
+	api.Get("/getreflectiondata", journal.GetTodaySummerizedReflection)
+
+
+	api.Get("/reflection", journal.GetSummerizedReflectionByDate)
+	api.Get("/journal", journal.GetSummerizedJournalByDate)
 
 
 }

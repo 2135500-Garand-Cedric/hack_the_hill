@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: index.php");
         } else {
             // Handle error response
-            $_SESSION['snackbar_message'] = 'An error occured with the login. <br />';
+            $_SESSION['snackbar_message'] = 'Incorrect username or password.<br />';
             header("Location: login.php");
         }
     } else {
