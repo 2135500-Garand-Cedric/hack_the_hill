@@ -1,7 +1,7 @@
 package ai
 
 import (
-	"encoding/json"
+	// "encoding/json"
 	// "fmt"
 
 
@@ -14,15 +14,9 @@ type Task struct {
 }
 
 func CleanAndFormatJSON(input string) (string, error) {
-	return strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(input, "\\\"", "\""), "\"\"", "\""), " ", ""), "\n", ""), "\\", ""), nil
+
+	input = strings.Trim(input, " \n")
+	input = strings.ReplaceAll(input, "\n", " ")
+	return input, nil
 }
 
-
-func ConvertToValidJSON(input string) ([]Task, error) {
-	var tasks []Task
-	err := json.Unmarshal([]byte(input), &tasks)
-	if err != nil {
-		return nil, err
-	}
-	return tasks, nil
-}

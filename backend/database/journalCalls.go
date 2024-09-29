@@ -26,6 +26,34 @@ func GetJournalDB() *AlgoeDB.Database {
 	return db
 }
 
+func GetTodayDataEntry1(db *AlgoeDB.Database, username string) (JournalEntry, error) {
+
+	query := JournalEntry{"date": time.Now().Format("2006-01-02"), "username": username, "entry": "1"}
+
+	result := db.FindOne(query)
+	
+	if result == nil {
+		return JournalEntry{}, fmt.Errorf("journal not found")
+	}
+	
+	fmt.Println(result)
+	return result, nil
+}
+
+func GetTodayDataEntry2(db *AlgoeDB.Database, username string) (JournalEntry, error) {
+
+	query := JournalEntry{"date": time.Now().Format("2006-01-02"), "username": username, "entry": "2"}
+
+	result := db.FindOne(query)
+	
+	if result == nil {
+		return JournalEntry{}, fmt.Errorf("journal not found")
+	}
+	
+	fmt.Println(result)
+	return result, nil
+}
+
 func InsertJournalEntry(db *AlgoeDB.Database, entry JournalEntry) error {
 
 	err := db.InsertOne(entry)
@@ -80,7 +108,6 @@ func InsertSummerizedJournalEntry(db *AlgoeDB.Database, entry SumJournalEntry) e
 	return nil
 	
 }
-
 
 func GetTodaySummerizedJournal(db *AlgoeDB.Database, user string) (SumJournalEntry, error) {
 	
