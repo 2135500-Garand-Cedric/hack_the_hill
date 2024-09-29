@@ -130,6 +130,32 @@ main {
     margin: 20px;
 }
 
+.icon-icon-container {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.username {
+    color: white;
+}
+
+.date {
+    color: white;
+}
+
+.first-entry {
+    color: white;
+}
+
+.sidebar-subcontainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     #login-btn {

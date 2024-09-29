@@ -1,5 +1,34 @@
 <?php
 require './include/configurations.php';
+$api_url = "http://127.0.0.1:3000/api/getsidebardata"; // Replace with your API URL
+$token = $_SESSION['token'];
+
+// Initialize cURL
+$ch = curl_init($api_url);
+
+// Set cURL options
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    'Authorization: Bearer ' . $token,
+    'Content-Type: application/json'
+]);
+
+// Execute the cURL request
+$response = curl_exec($ch);
+
+// Check for errors
+if (curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+    $response = ""; // Clear response on error
+}
+
+// Close cURL session
+curl_close($ch);
+
+// You can decode the response if it's JSON
+$data = json_decode($response, true);
+print_r($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,13 +50,22 @@ require './include/configurations.php';
 			unset($_SESSION['snackbar_message']);
 		}
 	?>
+
     <!-- Sidebar -->
     <div class="sidebar collapsed" id="sidebar">
         <div class="toggle-btn" id="toggle-btn"><i class="fa fa-bars"></i></div>
-        <div>
-            <div class="icon-container collapsed" id="logo-icon"><img src="./images/logo.png" alt="logo" class="logo"></div>
-            <div class="icon-container collapsed" id="history-icon"><i class="fa fa-history history-icon"></i></div>
-            <div class="icon-container collapsed" id="cog-icon"><i class="fa fa-cog cog-icon"></i></div>
+        <div class="sidebar-subcontainer">
+            <div class="icon-icon-container">
+                <div class="icon-container collapsed" id="logo-icon"><img src="./images/logo.png" alt="logo" class="logo"></div>
+                <div class="icon-container collapsed" id="history-icon"><i class="fa fa-history history-icon"></i></div>
+                <div class="icon-container collapsed" id="cog-icon"><i class="fa fa-cog cog-icon"></i></div>
+            </div>
+            <div class="information">
+                <div class="username hidden">Hi [username]</div>
+                <div class="date hidden"></div>
+                <div class="first-entry hidden">First Entry:</div>
+
+            </div>
         </div>
     </div>
 
