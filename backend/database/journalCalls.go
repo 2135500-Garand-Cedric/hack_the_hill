@@ -58,7 +58,7 @@ func GetTodayJournal(db *AlgoeDB.Database, username string) (JournalDB, error) {
 type SumJournalDB []map[string]interface{}
 type SumJournalEntry map[string]interface{}
 
-func GetSummerizedJournal() *AlgoeDB.Database {
+func GetSummerizedJournalDB() *AlgoeDB.Database {
 
 	config := AlgoeDB.DatabaseConfig{Path: "./db/summerizedjournal.json"}	
 	db, err := AlgoeDB.NewDatabase(&config)
@@ -82,3 +82,31 @@ func InsertSummerizedJournalEntry(db *AlgoeDB.Database, entry SumJournalEntry) e
 }
 
 
+func GetTodaySummerizedJournal(db *AlgoeDB.Database, user string) (SumJournalEntry, error) {
+	
+	query := SumJournalEntry{"date": time.Now().Format("2006-01-02"), "username": user}
+
+	result := db.FindOne(query)
+
+	if result == nil {
+		return SumJournalEntry{}, fmt.Errorf("summerized journal not found")
+	}
+
+	return result, nil
+	
+}
+
+func GetSummerizedJournalByDate(db *AlgoeDB.Database, user string, date string) (SumJournalDB, error) {
+
+
+	query := SumJournalEntry{"date": date, "username": user}
+
+
+	result := db.FindMany(query)
+	
+	if result == nil {
+		return SumJournalDB{}, fmt.Errorf("summerized journal not found")
+	}
+	
+	return result, nil
+}	

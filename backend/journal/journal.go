@@ -8,6 +8,8 @@ import (
 
 	"hackthehill/backend/ai"
 	"hackthehill/backend/database"
+
+	
 )
 
 
@@ -58,6 +60,7 @@ func CreateJournalEntry(c *fiber.Ctx) error {
 
 	entryNum := entry["entry"].(int)
 
+
 	err = CreateSidebarEntry(data, c.Locals("user").(string), entryNum )
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
@@ -88,13 +91,20 @@ func CreateSidebarEntry(data string, username string, entryNum int) error {
 		return err
 	}
 
-	db := database.GetSummerizedJournal()
+	db := database.GetSummerizedJournalDB()
+	fmt.Println(data)
+
+	cleanedJSON, err := ai.CleanAndFormatJSON(data)
+	if err != nil {
+		fmt.Println(err)
+		return err
+	}	
 
 	entry := database.SumJournalEntry{
 		"username": username,
 		"entry": entryNum,
 		"date": time.Now().Format("2006-01-02"),
-		"data": data,
+		"data": cleanedJSON,
 	}
 
 
@@ -107,3 +117,36 @@ func CreateSidebarEntry(data string, username string, entryNum int) error {
 
 }
 
+
+func GetTodaySummerizedJournal(c *fiber.Ctx) error {
+
+	db := database.GetSummerizedJournalDB()
+
+	result, err := database.GetTodaySummerizedJournal(db, c.Locals("user").(string))
+	
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Could not get today's journal",
+		})
+	}
+
+	fmt.Println(result["data"].( string))
+
+	dat, err := ai.CleanAndFormatJSON(result["data"].( string))
+
+	fmt.Println(dat)
+	fmt.Println("err")
+
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Could not convert to valid JSON",
+		})
+	}
+
+	data := map[string]interface{}{
+		"data": dat,
+	}
+
+	return c.Status(fiber.StatusOK).JSON(data)
+}
+	

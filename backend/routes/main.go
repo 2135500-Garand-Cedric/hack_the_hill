@@ -39,5 +39,7 @@ func Setup(app *fiber.App) {
 
 	api.Post("/createjournalentry", journal.CreateJournalEntry)
 
+	api.Get("/getsidebardata", journal.GetTodaySummerizedJournal)
+
 
 }
