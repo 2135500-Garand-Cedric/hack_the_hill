@@ -17,6 +17,7 @@ toggleBtn.addEventListener('click', function() {
     date.classList.toggle('hidden');
     firstEntry.classList.toggle('hidden');
     secondEntry.classList.toggle('hidden');
+    adviceEntry.classList.toggle('hidden');
     datePicker.style.display = 'none';
 });
 
@@ -88,13 +89,14 @@ document.getElementById('date-picker').addEventListener('change', function() {
     fetch(url3)
         .then(response => response.json())
         .then(data => {
-            const tasksArray = JSON.parse(data.data);
+            console.log(data)
+            const tasksArray = JSON.parse(data.advice);
             if (data.error) {
                 alert(data.error);
             } else {
                 let html = "Advice:<br />";
                 tasksArray.forEach((data, index) => {
-                    html += `<b>${data.task || 'N/A'}</b>: ${data.description || 'N/A'}<br />`;
+                    html += `<b>${data.category || 'N/A'}</b>: ${data.advice || 'N/A'}<br />`;
                 });
                 adviceEntry.innerHTML = html;
             }
