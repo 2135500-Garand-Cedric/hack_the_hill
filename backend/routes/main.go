@@ -52,6 +52,8 @@ func Setup(app *fiber.App) {
 	api.Get("/advice", profiler.GetAdvice)
 	api.Get("/getadvice", profiler.GetTodaysAdvice)
 
+	api.Get("/advice/past", profiler.GetAdviceByDate)
+
 
 
 	api.Get("/testAdvice", profiler.GetAdvice)

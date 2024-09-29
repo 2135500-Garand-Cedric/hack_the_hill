@@ -13,7 +13,7 @@ type Task struct {
 	Description string `json:"description"`
 }
 
-func ensureBrackets(input string) string {
+func EnsureBrackets(input string) string {
     // Trim leading and trailing whitespace
     trimmed := strings.TrimSpace(input)
 
@@ -32,7 +32,7 @@ func CleanAndFormatJSON(input string) (string, error) {
 	input = strings.Trim(input, " \n")
 	input = strings.ReplaceAll(input, "\n", " ")
 
-	input = ensureBrackets(input)	
+	input = EnsureBrackets(input)	
 
 	return input, nil
 }

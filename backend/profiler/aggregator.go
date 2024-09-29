@@ -45,6 +45,7 @@ func GenerateAdvice(username string) (map[string]interface{}, error) {
 	
 	response, err := ai.AggregateAdvices(data1["data"].(string), data2["data"].(string), username)
 	
+	response = ai.EnsureBrackets(response)
 
 	if err != nil {
 		return nil, err
@@ -90,4 +91,21 @@ func GetTodaysAdvice(c *fiber.Ctx) error {
 	}
 
 	return c.Status(fiber.StatusOK).JSON(advice)
+}
+
+
+func GetAdviceByDate(c *fiber.Ctx) error {
+	date := c.Query("date")
+	convertedDate, _ := time.Parse("2006-01-02", date)
+	db := database.GetAdviceDB()
+
+	result, err := database.GetAdviceByDate(db, c.Locals("user").(string), convertedDate.Format("2006-01-02"))
+	
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Could not get advice by date",
+		})
+	}
+
+	return c.Status(fiber.StatusOK).JSON(result)
 }
