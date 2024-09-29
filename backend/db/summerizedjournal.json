@@ -1,18 +1,8 @@
-<<<<<<< HEAD
-
-=======
 [
 	{
-		"data": "{\"task\":\"WakeUp\",\"description\":\"Wokeupat8am\"},{\"task\":\"AttendSchool\",\"description\":\"Attendingschoolat9am\"},{\"task\":\"Eat\",\"description\":\"Eatingat4pm\"},{\"task\":\"MathPractise\",\"description\":\"Workingonmathfor2hours\"},{\"task\":\"MovieNight\",\"description\":\"Watchingamoviebeforebed\"},{\"task\":\"Bedtime\",\"description\":\"Goingtobedaround11pm\"}",
+		"data": "{\"task\": \"Wake Up\", \"description\": \"Woke up at 8:00 AM today\"}, {\"task\": \"Attend School\", \"description\": \"Headed to school at 9:00 AM\"}, {\"task\": \"Eat Lunch\", \"description\": \"Planned lunch at 4:00 PM\"}, {\"task\": \"Math Homework\", \"description\": \"Spend 2 hours working on math from 4:00 PM to 6:00 PM\"}, {\"task\": \"Watch Movie\", \"description\": \"Watch a movie to wind down before sleep\"}, {\"task\": \"Sleep\", \"description\": \"Plan to go to bed around 11:00 PM\"}",
 		"date": "2024-09-28",
 		"entry": "1",
 		"username": "coolkid123"
-	},
-	{
-		"data": "{\"task\":\"WakeUp\",\"description\":\"Wokeupat8:00AM\"},{\"task\":\"GotoSchool\",\"description\":\"Plantoattendschoolat9:00AM\"},{\"task\":\"Eat\",\"description\":\"Plantoeatat4:00PM\"},{\"task\":\"WorkonMath\",\"description\":\"Spent2hoursworkingonmath\"},{\"task\":\"MovieNight\",\"description\":\"Watchedamoviebeforegoingtobedataround11:00PM\"}",
-		"date": "2024-09-28",
-		"entry": "2",
-		"username": "coolkid123"
 	}
 ]
->>>>>>> 09a52f8 (More endpoints for data)
