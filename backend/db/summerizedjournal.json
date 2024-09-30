@@ -1,0 +1,14 @@
+[
+	{
+		"data": "[{\"task\": \"Gym\", \"description\": \"Go to the gym at 3:00 PM\"}, {\"task\": \"Math Quiz\", \"description\": \"Math quiz after class\"}, {\"task\": \"Healthy Dinner\", \"description\": \"Have a healthy dinner with lots of protein\"}]",
+		"date": "2024-09-29",
+		"entry": "1",
+		"username": "Sahij"
+	},
+	{
+		"data": "[{\"task\": \"Morning Routine\", \"description\": \"Scheduled gym time passed\"}, {\"task\": \"Math Quiz\", \"description\": \"Squared away with the quiz, it turned out to be more time consuming than expected\"}, {\"task\": \"Emergency Dinner\", \"description\": \"Quickly grabbed a Big Mac at McDonald's\"}, {\"task\": \"Lack of Sleep\", \"description\": \"Went to bed at 2:00 AM\"}]",
+		"date": "2024-09-29",
+		"entry": "2",
+		"username": "Sahij"
+	}
+]
