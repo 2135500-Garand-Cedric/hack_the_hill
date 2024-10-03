@@ -3,5 +3,10 @@
 		"email": "a@test.com",
 		"password": "$2a$14$cG6FU7qbjl917V2TVoQCn.TT30MVxZ5DkNmoBdrQUUBila6k78Ldm",
 		"username": "Sahij"
+	},
+	{
+		"email": "t@t.com",
+		"password": "$2a$14$9BrvJ/jfg/fsHWM37A7UKOPjWr/e5QfZe.rp/GH2Y7KIDOa3qRV7O",
+		"username": "nawaf"
 	}
 ]
