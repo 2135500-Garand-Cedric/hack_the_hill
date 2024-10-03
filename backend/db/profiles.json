@@ -8,5 +8,15 @@
 		"interests": "Watching horror movies",
 		"occupation": "University student",
 		"username": "Sahij"
+	},
+	{
+		"city": "t",
+		"dob": "t",
+		"gender": "t",
+		"goals": "t",
+		"hobbies": "t",
+		"interests": "t",
+		"occupation": "t",
+		"username": "nawaf"
 	}
 ]
